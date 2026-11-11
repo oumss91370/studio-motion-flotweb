@@ -1,0 +1,27 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+===========================================================
+
+Le texte juridique complet de cette licence n'est PAS reproduit ici.
+Aucun des dépôts sources clonés ne le contient en entier (le dépôt
+lemomo-ai/lemo-opuscar ne donne qu'un lien dans son README), et nous
+n'avons pas voulu en recopier une version non vérifiée.
+
+Texte officiel (code juridique) :
+    https://creativecommons.org/licenses/by/4.0/legalcode
+Version texte brut :
+    https://creativecommons.org/licenses/by/4.0/legalcode.txt
+Résumé :
+    https://creativecommons.org/licenses/by/4.0/
+
+À faire avant toute diffusion d'un film ou d'une image sous CC BY 4.0
+(galerie d'aperçus, page de vente) : télécharger le texte officiel et le
+placer dans ce fichier, ou garder le lien ci-dessus à côté de chaque crédit.
+
+Ce que la licence demande, en bref (voir NOTICE pour le détail) :
+crédit de l'auteur, lien vers la source, nom et lien de la licence,
+mention des modifications ; aucune restriction supplémentaire ajoutée.
+
+Dans le plugin, elle concerne les films et images de démo de LemoLab
+(lemomo-ai/lemo-opuscar), qui ne sont pas copiés mais cités par des liens,
+et le modèle de reconnaissance vocale Parakeet TDT 0.6B v3 de NVIDIA, que
+la commande HyperFrames télécharge chez le client (non redistribué ici).

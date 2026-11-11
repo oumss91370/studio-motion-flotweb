@@ -1,0 +1,91 @@
+Licence MIT : texte commun et lignes de copyright
+==================================================
+
+Ce fichier réunit, pour le plugin studio-motion-flotweb, le texte de la licence
+MIT (une seule fois) et la ligne de copyright de chaque source MIT reprise.
+Le texte de la permission est identique, mot pour mot, dans les 19 dépôts
+ci-dessous (vérifié sur les clones aux commits indiqués dans NOTICE).
+Chaque ligne de copyright est recopiée du fichier LICENSE du dépôt.
+La licence MIT s'applique à chaque source séparément, avec sa propre ligne.
+
+Lignes de copyright
+-------------------
+
+Copyright (c) 2026 LemoLab
+    lemomo-ai/lemo-opuscar (code et documents ; films et images : CC BY 4.0)
+Copyright (c) 2026 alchaincyf (花叔 · 花生)
+    alchaincyf/huashu-art-motion (avec les exclusions listées dans NOTICE)
+Copyright (c) 2026 cth9191
+    cth9191/animate
+Copyright (c) 2026 Charlie Hills
+    charlie947/motion-graphics-skills
+Copyright (c) 2026 Shohei Ohtaki
+    showheyohtaki/motion-prompt
+Copyright (c) 2025 LottieFiles
+    LottieFiles/motion-design-skill
+Copyright (c) 2025 haidrrrry
+    haidrrrry/claude-remotion-skill
+Copyright (c) 2026 GreenSock
+    greensock/gsap-skills (les skills seulement ; la bibliothèque GSAP a sa propre licence)
+Copyright (c) 2026 whaleyxbt
+    whaleyxbt/claude-motion
+Copyright (c) 2026 Howseen AI (Raphaël Aubry)
+    howseen-ai/claude-motion-design
+Copyright (c) 2026 Abubakr Chan
+    AbubakrChan/product-launch-motion (voir aussi NOTICE-product-launch-motion.txt)
+Copyright (c) 2026 Leon Lin
+    Leonxlnx/earshot
+Copyright (c) 2026 Bart
+    Barty-Bart/motion-graphics
+    Le fichier LICENSE de ce dépôt ajoute, après le texte MIT :
+    "The Geist and Geist Mono fonts in skills/motion-broll/engine/fonts are
+    licensed separately under the SIL Open Font License 1.1 (see OFL-Geist.txt).
+    Icon paths are adapted from Lucide (ISC License)."
+    (ni ces polices ni ces icônes ne sont dans le plugin)
+Copyright (c) 2026 Nate Herk
+    nateherkai/hyperframes-student-kit, kit d'origine
+    (ajouts « pipeline » : voir Herk-Edit-Kit-Use-Permission.txt ; le fichier
+    LICENSE du dépôt précise que la marque « AI Automation Society » n'est pas
+    concédée ; elle n'est pas reprise)
+Copyright (c) 2025 Siddharth Ahuja
+    ahujasid/mcp-for-blender
+Copyright (c) 2026 angrypenguinpng
+    angrypenguinpng/blender-claymation-skill
+Copyright (c) 2026 John Heibel
+    JohnHeibel/ClaudeAnimationBase
+Copyright (c) 2026 tuzhechen2005
+Portions (skills/painted-animation/template/, and skills/kinetic-reel/template/render.mjs, which is derived from it)
+Copyright (c) 2026 John Heibel, see skills/painted-animation/template/LICENSE
+    tuzhechen2005/opus-video-skills (les trois lignes ci-dessus sont celles de son LICENSE)
+Copyright (c) 2025 Jesse Vincent
+    obra/superpowers
+
+Mention conservée dans un fichier copié (rien de ce projet n'est dans le plugin) :
+Copyright (c) 2026 Seokwoooo
+    Seokwoooo/lucian-uxui, cité par Motion Prompt dans
+    skills/principes-mouvement/references/motion-prompt/THIRD-PARTY-NOTICES.md
+
+Texte de la licence
+-------------------
+
+MIT License
+
+Copyright (c) <année> <titulaire : voir la liste ci-dessus>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

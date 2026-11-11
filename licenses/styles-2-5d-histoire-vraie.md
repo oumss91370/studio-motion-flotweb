@@ -1,0 +1,27 @@
+# Crédits de la catégorie `styles-2-5d-histoire-vraie`
+
+| Source | Auteur | Dépôt | Commit | Licence | Ce qui est repris |
+|---|---|---|---|---|---|
+| Cours « How to build a 2.5D motion studio with Opus 5.5 (Full Course) » | article public, auteur non indiqué dans la copie analysée | — | — | — | Anatomie du format, les cinq raisons pour lesquelles il fonctionne, parcours de production (5 histoires sourcées, texte de 150 à 170 mots, `sources.md`, un plan par idée, 3 à 5 décors, temps clés en numéros d'image, voix et temps mot à mot, sous-titres de 1 à 2 mots, planche contact et test téléphone, 3 corrections par tour, correction en 4 champs), règles vis-à-vis des plateformes. Idées et méthode reformulées en français et adaptées (HyperFrames à la place de Remotion, −14 LUFS) ; les exemples chiffrés du cours sont signalés comme valeurs de départ. Aucune vidéo, aucun personnage ni aucun texte de la chaîne étudiée par le cours n'est repris. |
+| lemo-opuscar, « OPUSCAR 98 » | LemoLab | https://github.com/lemomo-ai/lemo-opuscar | `9eb7739` | MIT (prompts et documents), CC BY 4.0 (film et images) | Deux prompts de style 2.5D de `styleboard/opuscar98_styles.json` : entrée n° 41 (théâtre-jouet en carton) pour `theatre-de-papier`, entrée n° 67 (livre pop-up filmé sur un bureau) pour `livre-pop-up`, dont la fiche unique est désormais dans `styles-matieres-3d` (voir `licenses/styles-matieres-3d.md`) : couleurs, épaisseurs, lumière, caméra, liste « à éviter ». Titres d'œuvres, personnages et mascotte retirés. Le film n'est cité qu'en lien (les fiches de `styles-cinema`, tirées du même fichier, ne le lient pas : voir `licenses/styles-cinema.md`). © 2026 LemoLab. |
+| MCP for Blender | Siddharth Ahuja | https://github.com/ahujasid/mcp-for-blender | `2e4b0bc` | MIT | Outils utilisés par les recettes (voir `licenses/blender.md`). |
+| ClaudeAnimationBase | John Heibel | https://github.com/JohnHeibel/ClaudeAnimationBase | `0ac8bf2` | MIT | Jeu d'acteur (voir `licenses/personnages.md`). |
+| motion-prompt | showheyohtaki | https://github.com/showheyohtaki/motion-prompt | `7819d38` | MIT | Numéros de mouvements cités dans les fiches (010, 011, 012, 016, 021, 023, 024, 027, 029, 030, 031, 032, 033, 034, 036, 043, 187). |
+| Whisper | OpenAI | https://github.com/openai/whisper | — | MIT | Commande d'horodatage mot à mot citée dans le parcours. |
+
+## Origine du kit de départ (`skills/styles-2-5d-histoire-vraie/kit/`)
+
+- **Créé par le studio (Flot Web)** lors de son prototype 2.5D du 11/11/2026 : un film de 61,5 s (36 plans, 1 845 images) produit de bout en bout avec Blender 5.3, le connecteur MCP for Blender et HyperFrames. Les outils de ce film (liste de plans en données, bibliothèque de construction, film, rendus de contrôle, boucle de rendu, re-rendu par plages, suivi, planches, revue, mixage, assemblage) ont été réécrits en version générique, en Python, pour Windows, macOS et Linux.
+- **Le prototype lui-même est un test interne, non publié, et il n'est pas distribué** : ni le film, ni son script, ni ses sources, ni ses personnages, ni son objet héros, ni ses décors, ni sa voix, ni ses sons ne figurent dans le plugin. Il suivait de près le sujet et la grammaire d'une chaîne existante, par choix pour un essai interne ; rien de ce contenu n'a été repris dans le kit.
+- **Ce que le kit contient en propre** : la mécanique, et un exemple neutre original de 2 plans (un atelier, une sonnette, un personnage d'exemple nommé « Galet »), dessiné et écrit par le studio pour le kit. Cet exemple ne reprend le dessin d'aucune chaîne ni d'aucun personnage tiers ; il est fait pour être remplacé par le personnage du client.
+- **Aucun code tiers** dans le kit. Il s'appuie sur des outils installés à part, non redistribués : Blender (GPL, Blender Foundation), le module Python `bpy`, Pillow (licence MIT-CMU), NumPy (BSD), FFmpeg (LGPL ou GPL selon la compilation), HyperFrames (Apache 2.0, HeyGen ; voir `NOTICE`).
+- **Aucun média tiers** : le kit ne contient ni son, ni voix, ni texture, ni police. Les fichiers de `kit/exemple/voix/` sont un horodatage d'exemple écrit à la main.
+- **Règles marquées « rendu réel du 11/11/2026 »** dans `references/pipeline.md`, la fiche `histoire-vraie-tete-ronde` et le `SKILL.md` de la catégorie (bande des sous-titres, sujet dans les 65 % du haut, budget de bruitages d'une histoire narrée, instruments virtuels, objet héros sans double, contrôle de la voix de synthèse, vérification fait par fait, questions de critique, temps mesurés) : constats du studio sur ce prototype. Les 9 questions de critique sont une formulation du studio, tirée des neuf corrections consignées dans la revue du prototype.
+- **Essai du kit** : l'exemple a été construit et rendu le 11/11/2026 avec le module `bpy` 5.3.0 sur une machine Linux sans carte graphique (Cycles sur processeur, taille réduite), puis assemblé avec HyperFrames 0.9.33. Ce qui a tourné et ce qui n'a pas été essayé est dit dans `references/pipeline.md`.
+
+Aperçus :
+
+- `theatre-de-papier` et `livre-pop-up` : extraits du film collectif de LemoLab (CC BY 4.0), **en lien seulement** ; ne pas les afficher sur une page de vente (mascotte tierce, œuvres adaptées).
+- `histoire-vraie-tete-ronde` : aucun aperçu tiers ; à produire avec le plugin. Le film du prototype n'est pas un aperçu : il n'est ni publié ni distribué.
+
+Crédit à afficher si un extrait LemoLab est montré : « LemoLab, CC BY 4.0, github.com/lemomo-ai/lemo-opuscar », en indiquant toute modification.

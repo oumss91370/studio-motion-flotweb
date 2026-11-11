@@ -1,0 +1,27 @@
+{
+  "_mode_d_emploi": [
+    "Relevé des textes à remplir À LA MAIN pour un film dessiné dans un <canvas> (pixel art, cartoon tracé, Three.js) :",
+    "le navigateur ne sait pas lire un texte peint, donc relever_textes.py ne le voit pas.",
+    "1. Copier ce fichier en textes.json dans le dossier de la vidéo. Supprimer les clés qui commencent par _.",
+    "2. Une entrée par texte et par présence à l'écran. Les valeurs se lisent DANS LE CODE du film, pas à l'œil :",
+    "   - debut : instant où le texte est entier et lisible (fin de son animation d'entrée) ; fin : instant où il commence à partir ;",
+    "   - x0, y0, x1, y1 : boîte des lettres en pixels de l'image finale (1080×1920). Film dessiné sur une grille",
+    "     (pixel art) : pixel = case × taille d'une case. Exemple grille 135×240 agrandie ×8 : un texte qui commence case (12, 40),",
+    "     large de 60 cases et haut de 7 → x0 = 96, y0 = 320, x1 = 576, y1 = 376 ;",
+    "   - taille_px : hauteur d'une majuscule × environ 1,4 (équivalent d'une taille de police), en pixels de l'image finale ;",
+    "   - texte : les mots exacts (le temps de lecture se compte en mots).",
+    "3. Vérifier chaque boîte sur une image du film : python3 scripts/planche_contact.py film.mp4 revue/ --bande <debut + 0,2>.",
+    "4. Champs facultatifs : \"sous_titre\": true (calé sur la voix), \"passage\": true (décor, pas à lire), \"vivant\": true (tremble ou flotte par style).",
+    "5. Écrire dans la note de livraison que ce relevé est fait à la main.",
+    "Mieux, si le code du film connaît déjà ces valeurs : les lui faire déclarer, window.__textes = (t) => [{id, texte, x0, y0, x1, y1, taille_px, opacite}],",
+    "et relever_textes.py les suivra tout seul (voir son en-tête)."
+  ],
+  "largeur": 1080,
+  "hauteur": 1920,
+  "releve": {"outil": "à la main, d'après le code du film", "grille": "135x240 cases de 8 px (à adapter ou à retirer)"},
+  "textes": [
+    {"id": "accroche", "texte": "3 € PAR JOUR", "debut": 0.6, "fin": 2.8, "x0": 96, "y0": 320, "x1": 576, "y1": 376, "taille_px": 78},
+    {"id": "score", "texte": "NIVEAU 2", "debut": 4.0, "fin": 6.5, "x0": 96, "y0": 200, "x1": 420, "y1": 256, "taille_px": 78, "passage": true},
+    {"id": "chute", "texte": "ET TOI ?", "debut": 7.5, "fin": 10.0, "x0": 240, "y0": 880, "x1": 760, "y1": 992, "taille_px": 156}
+  ]
+}

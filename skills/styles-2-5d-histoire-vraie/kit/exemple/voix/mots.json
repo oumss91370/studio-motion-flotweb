@@ -1,0 +1,12 @@
+[
+ {"text": "Sur", "start": 0.15, "end": 0.30, "line": 0},
+ {"text": "l'établi", "start": 0.32, "end": 0.80, "line": 0},
+ {"text": "une", "start": 0.95, "end": 1.05, "line": 0},
+ {"text": "sonnette", "start": 1.07, "end": 1.40, "line": 0},
+ {"text": "Un", "start": 1.55, "end": 1.65, "line": 1},
+ {"text": "doigt", "start": 1.67, "end": 1.90, "line": 1},
+ {"text": "dessus", "start": 1.92, "end": 2.20, "line": 1},
+ {"text": "et", "start": 2.32, "end": 2.40, "line": 1},
+ {"text": "elle", "start": 2.42, "end": 2.55, "line": 1},
+ {"text": "tinte", "start": 2.57, "end": 2.90, "line": 1}
+]

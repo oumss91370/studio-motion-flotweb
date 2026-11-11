@@ -1,0 +1,532 @@
+NOTICE du plugin studio-motion-flotweb
+======================================
+
+Version du plugin : 0.1.0. Rédigé le 11/11/2026 par Flot Web.
+
+Ce plugin est écrit par Flot Web. Il reprend aussi du travail de tiers :
+quelques fichiers copiés tels quels, beaucoup de règles traduites et adaptées
+en français, et des idées reformulées. Ce fichier dit, source par source,
+ce qui est repris, sous quelle licence, et dans quels skills.
+
+Comment lire ce fichier
+- « copié tel quel » : le fichier d'origine est dans le plugin, sans modification
+  (comparé au clone avec diff le 11/11/2026).
+- « adapté » : texte traduit, résumé ou réécrit par Flot Web à partir de la
+  source (œuvre modifiée).
+- « règles et idées » : seules des méthodes, des seuils ou des noms sont repris ;
+  aucun fichier ni passage n'est recopié.
+- Chaque commit cité a été vérifié sur le clone du dépôt (git rev-parse HEAD).
+- Le détail par skill est dans licenses/<nom-du-skill>.md (20 fichiers).
+- Les textes de licences sont dans licenses/textes/ :
+    Apache-2.0.txt   copie exacte du fichier LICENSE de HyperFrames
+    MIT.txt          texte MIT une fois, et la liste des lignes de copyright
+    CC-BY-4.0.txt    lien officiel seulement (texte complet non reproduit, voir ce fichier)
+    Herk-Edit-Kit-Use-Permission.txt   copie exacte
+    NOTICE-product-launch-motion.txt   copie exacte du NOTICE de ce dépôt
+
+La licence du plugin lui-même n'est pas décidée : voir LICENSE (provisoire)
+et la section « À décider » à la fin.
+
+
+1. Apache License 2.0
+=====================
+
+HyperFrames
+  Titulaire : Copyright 2026 HeyGen, Inc.
+  Dépôt     : https://github.com/heygen-com/hyperframes
+  Version   : 0.9.33, commit ffb13c3b62a1b8ed98fdcd835f15412d0a7ca7e6 (11/11/2026)
+  Licence   : Apache License, Version 2.0 (licenses/textes/Apache-2.0.txt,
+              et skills/rendu/references/officiel/LICENSE)
+
+  Fichier NOTICE d'origine : le dépôt n'en contient pas (vérifié sur le clone).
+  Il n'y a donc pas de texte NOTICE à recopier. Le dépôt a un fichier
+  CREDITS.md (remerciements et licences de ses composants tiers) : il est
+  copié tel quel dans skills/rendu/references/officiel/CREDITS.md.
+
+  Copié tel quel (documentation en anglais, non modifiée) :
+    skills/rendu/references/officiel/hyperframes/           <- skills/hyperframes/ (SKILL.md, references/)
+    skills/rendu/references/officiel/hyperframes-cli/       <- skills/hyperframes-cli/
+    skills/rendu/references/officiel/hyperframes-registry/  <- skills/hyperframes-registry/
+    skills/rendu/references/officiel/media-use/             <- skills/media-use/ (documents seulement)
+    skills/rendu/references/officiel/LICENSE, CREDITS.md
+  Ajoutés par Flot Web dans ce dossier (ne viennent pas de HyperFrames) :
+    NOTICE.md, VERSION.md
+
+  Fichiers modifiés (œuvre dérivée : résumé, traduction et adaptation en
+  français par Flot Web, novembre 2026) :
+    skills/rendu/SKILL.md
+    skills/rendu/references/cli.md
+    skills/rendu/references/contrat-et-boucle.md
+    skills/rendu/references/exports.md
+    skills/rendu/references/installation.md
+    skills/rendu/references/medias.md
+    skills/rendu/references/nouveautes-0.9.33.md
+    skills/rendu/references/registry.md
+    skills/rendu/references/sous-titres.md
+    skills/rendu/references/zones-interface.md
+
+  Règles et idées (aucun fichier copié) :
+    skill son (pic du son par rapport à l'image, niveaux, commandes audio),
+    styles-montage-documentaire, styles-lancement-produit et formats-flotweb
+    (zone sûre verticale, sous-titres, export), par l'intermédiaire du skill rendu.
+
+  Non repris : scripts, tests, tables de couleurs, dossiers assets/ et luts/
+  du dépôt ; bruitages MP3 du skill media-use (licence Pixabay) ; éléments du
+  registry (ils sont téléchargés chez le client par la commande hyperframes).
+
+  Marques : HyperFrames et HeyGen sont des marques de leurs propriétaires.
+  Ce plugin n'est pas un produit officiel de HeyGen, n'y est pas affilié et
+  n'est pas approuvé par HeyGen.
+
+  Composants tiers que HyperFrames installe ou télécharge chez le client
+  (non redistribués par le plugin ; liste complète dans CREDITS.md) :
+  GSAP (licence GSAP, voir « À décider »), three.js (MIT), mediabunny
+  (MPL-2.0), Parakeet TDT 0.6B v3 de NVIDIA (CC BY 4.0), sherpa-onnx
+  (Apache 2.0), polices sous SIL OFL 1.1.
+
+
+2. Licence MIT
+==============
+
+Texte de la licence et lignes de copyright exactes : licenses/textes/MIT.txt.
+La licence MIT demande de garder la ligne de copyright et le texte de la
+permission dans toute copie ou partie substantielle.
+
+2.1 Sources dont des fichiers sont copiés tels quels
+----------------------------------------------------
+
+Motion Prompt
+  Copyright (c) 2026 Shohei Ohtaki
+  https://github.com/showheyohtaki/motion-prompt
+  commit 7819d3879eb7d5a1475c11c001bedffb5cab64af (catalogue 1.6950972783)
+  Copié tel quel : les 192 fiches d'éléments (api/v1/en/e/), les 8 kits
+    (api/v1/kit/), catalog.tsv (version anglaise), LICENSE et
+    THIRD-PARTY-NOTICES.md, dans
+    skills/principes-mouvement/references/motion-prompt/.
+    Chaque fiche garde sa première ligne
+    « // Motion Prompt #ID · MIT License (c) 2026 Shohei Ohtaki · … » :
+    elle ne doit pas être retirée, et doit suivre tout code repris.
+  Adapté : noms, résumés, durées et usages traduits dans
+    skills/principes-mouvement/references/dictionnaire-mouvements.md et camera.md.
+  Règles et idées : les numéros #001 à #192 sont cités dans les fiches de
+    toutes les catégories de styles et dans formats-flotweb.
+  Non repris : la page d'exemples trouvés sur les réseaux (found.html), les
+    vidéos et images d'aperçu.
+
+earshot et real-sound
+  Copyright (c) 2026 Leon Lin
+  https://github.com/Leonxlnx/earshot
+  version 0.4.1, commit 4ac3d2ac2b151e1c23376f9ce7f3047a17050013
+  Copié tel quel : skills/earshot/ et skills/real-sound/ (documents, scripts,
+    modèles) dans skills/son/references/officiel/ ; licence dans
+    skills/son/references/officiel/LICENSE-earshot.txt.
+  Adapté : skills/son/SKILL.md, references/regles.md, earshot.md,
+    chaine-complete.md, sources-libres.md.
+  Non repris : le paquet Python earshot et ses modèles (installés chez le client).
+
+claude-motion
+  Copyright (c) 2026 whaleyxbt
+  https://github.com/whaleyxbt/claude-motion
+  commit 6f80380b91858dad66524a5b34e027dad656d538
+  Copié tel quel : le dossier sfx/ (__init__.py, __main__.py, synth.py,
+    mix.py, loudness.py, dsp.py) dans skills/son/scripts/sfx/, avec sa licence.
+  Règles et idées : tenue de lecture des textes (studio-coeur), règles de
+    goût (principes-mouvement), méthode des simulations three.js
+    (styles-matieres-3d), synthèse en repli (son).
+  Non repris : sfx/cues/, toute la partie Remotion.
+
+motion-graphics
+  Copyright (c) 2026 Bart
+  https://github.com/Barty-Bart/motion-graphics
+  commit 3d83d987d658601d8a1269eb691622bdcd427335
+  Copié tel quel : skills/sound-effects/sfx/ (109 sons OGG, manifest.json) et
+    skills/sound-effects/LICENSES.md dans skills/son/banque-cc0/ ; licence du
+    code dans skills/son/banque-cc0/LICENSE-code-MIT.txt. Les sons eux-mêmes
+    sont sous CC0 (voir section 4).
+  Adapté : fiches teaser-haute-energie, demo-produit-epuree,
+    parcours-plan-sequence (styles-lancement-produit) ; animations-sur-la-voix,
+    detourage-sujet (styles-montage-documentaire).
+  Non repris : le moteur de rendu du dépôt, sa bande-son synthétisée, le code
+    de détourage, les polices Geist (OFL) et les tracés d'icônes adaptés de
+    Lucide (ISC).
+
+2.2 Sources adaptées (traduites, résumées, réécrites ; aucun fichier copié)
+---------------------------------------------------------------------------
+
+lemo-opuscar (code et documents)
+  Copyright (c) 2026 LemoLab
+  https://github.com/lemomo-ai/lemo-opuscar
+  commit 9eb7739a0fca4c6990fe966cb8b87b1930f7193a
+  Adapté : le contenu des STYLE.md et des valeurs des DEMO.md, pour les fiches
+    lemo de styles-peinture-dessin, styles-encre-asie, styles-papier-impression,
+    styles-graphique-typo, styles-explicatif-infographie, styles-cartoon,
+    styles-jeu-retro, styles-cinema, styles-matieres-3d,
+    styles-montage-documentaire ; les 98 prompts de
+    styleboard/opuscar98_styles.json (styles-cinema/references/98-looks.md,
+    et deux fiches de styles-2-5d-histoire-vraie).
+  Règles et idées : DIRECTOR.md, MY-STYLES.md, AGENTS.md, readcheck.mjs
+    (studio-coeur, marque), TECHNIQUE.md (personnages).
+  Style contribué : « Memphis Diorama », style et démo par Eian
+    (https://github.com/YIAN6557), à créditer avec l'aperçu de diorama-memphis.
+  Les films et images de ce dépôt sont sous CC BY 4.0 : voir section 3.
+
+huashu-art-motion
+  Copyright (c) 2026 alchaincyf (花叔 · 花生)
+  https://github.com/alchaincyf/huashu-art-motion
+  version 1.3.0, commit 1468196505a51728686db118d52561aa27a25124
+  Adapté : cartes de style (references/风格配方/) et de grammaire
+    (references/动画语法/), traduites du chinois, pour les fiches huashu de
+    styles-peinture-dessin, styles-encre-asie, styles-papier-impression,
+    styles-graphique-typo, styles-explicatif-infographie, styles-cartoon,
+    styles-jeu-retro, styles-matieres-3d ; les 8 palettes (marque).
+  Règles et idées : porte de livraison, lint du storyboard, note de
+    livraison, relecteur indépendant (studio-coeur) ; langage de la caméra et
+    seuil bleu-violet (principes-mouvement, styles-jeu-retro).
+  Exclus de la licence MIT par l'auteur, et non repris : son personnage
+    (dessins et images), les GIF et films qui montrent une mascotte tierce,
+    les polices du dépôt (OFL), un fichier de tracés sous Arphic Public License.
+
+animate
+  Copyright (c) 2026 cth9191
+  https://github.com/cth9191/animate
+  version 0.4.0, commit 7e5eb56feb2dd573f890e1b7b34748af43d58263
+  Adapté : styles math, pixel, isometric, cut-paper, riso, sketchbook,
+    crosshatch (fiches maths-animees, pixel-8-bits, isometrique-trait-fin,
+    papier-decoupe-collage, risographie, carnet-de-croquis, encre-hachures).
+  Règles et idées : parcours en validations, questions à options, grammaire
+    du récit (studio-coeur).
+  Modifié : le héros de deux styles (cut-paper, crosshatch) est remplacé par
+    un héros original, et la couleur d'accent du style sketchbook est changée.
+
+motion-graphics-skills
+  Copyright (c) 2026 Charlie Hills
+  https://github.com/charlie947/motion-graphics-skills
+  commit 229022ebca76972e119e36ada23a1648d51665ab
+  Adapté : skills launch-video, title-sequence-3d, reel-export
+    (styles-lancement-produit) ; vox-explainer, apple-launch-film,
+    animated-chart, milestone-reveal, et les 16 recettes de motion-effects,
+    traduites en entier (styles-explicatif-infographie).
+  Règles et idées : brand-intake (marque) ; « 5 mots au plus », faits
+    d'abord (studio-coeur).
+  Non repris : images et GIF du dépôt, éléments d'un système d'exploitation réel.
+
+product-launch-motion
+  Copyright (c) 2026 Abubakr Chan
+  https://github.com/AbubakrChan/product-launch-motion
+  version 2.0.0, commit edbfb105382f21507bad895d8b5f6e0faa67487c
+  Adapté : SKILL.md, references/, legacy/ (fiches
+    forme-continue-sur-la-musique, lancement-narre-mot-a-mot et quatre
+    références de styles-lancement-produit) ; référence caméra
+    (principes-mouvement).
+  Exclus par le NOTICE du dépôt (licenses/textes/NOTICE-product-launch-motion.txt),
+    non repris et à ne jamais réutiliser : les films d'exemple, leurs images
+    et legacy/still-1.jpg, qui appartiennent à un client de l'auteur.
+
+claude-motion-design
+  Copyright (c) 2026 Howseen AI (Raphaël Aubry)
+  https://github.com/howseen-ai/claude-motion-design
+  commit 3d90d349ef3fdde9b7e89de4df4a2159c9e8697f
+  Adapté : fiche film-produit-saas, règle de teaser-haute-energie
+    (styles-lancement-produit).
+  Règles et idées : critique notée sur sept critères, planches (studio-coeur) ;
+    règles « anti-motion IA », raccords, zoom (principes-mouvement) ; beat et
+    drop (son) ; sous-titres et encodage (rendu).
+  Non repris : film et logo de la marque de l'auteur, mèmes, visages générés.
+
+hyperframes-student-kit (« Herk Edit Kit »)
+  Copyright (c) 2026 Nate Herk (kit d'origine, MIT)
+  https://github.com/nateherkai/hyperframes-student-kit
+  commit 10511e5af86fc47756ea89803b397422e2d89284
+  Les ajouts « pipeline » du kit (skills de montage, flux court, playbook)
+  sont sous une permission d'usage propre, recopiée telle quelle ici depuis
+  licenses/PIPELINE-USE-PERMISSION.txt du dépôt :
+
+      Herk Edit Kit Use Permission
+
+      Copyright 2026 the contributors to this teaching kit.
+
+      Permission is granted to students and other recipients to use, copy, modify,
+      and share the original teaching-kit code, templates, and documentation, and to
+      use them to produce personal or commercial videos. Retain this notice when
+      redistributing the kit or substantial portions of its source materials.
+
+      Third-party software, fonts, and assets remain subject to their respective
+      licenses. No rights to third-party trademarks, likenesses, or excluded media
+      are granted. See THIRD_PARTY_NOTICES.md.
+
+      THE MATERIAL IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND. THE CONTRIBUTORS
+      ARE NOT LIABLE FOR CLAIMS OR DAMAGES ARISING FROM ITS USE.
+
+  Adapté : fiches derushage-silences-rates et reel-face-cam
+    (styles-montage-documentaire).
+  Règles et idées : marge latérale et sous-titres (rendu) ; niveau de la
+    musique sous la voix (son).
+  Non repris : la marque « AI Automation Society » (exclue par le LICENSE du
+    dépôt), les vidéos d'exemple et de vitrine, les copies des skills
+    HyperFrames et GSAP du kit, les scripts, les noms de styles qui citent
+    des tiers.
+
+blender-claymation-skill
+  Copyright (c) 2026 angrypenguinpng
+  https://github.com/angrypenguinpng/blender-claymation-skill
+  commit 0be7cc00f7c5dd80b50fab53f88d6527102ccc9c
+  Adapté : fiche pate-a-modeler (styles-matieres-3d).
+  Règles et idées : structure d'un skill Blender (blender) ; échange
+    d'expressions par pièces cachées (personnages).
+
+2.3 Sources dont seules des règles et des idées sont reprises
+-------------------------------------------------------------
+
+motion-design-skill
+  Copyright (c) 2025 LottieFiles
+  https://github.com/LottieFiles/motion-design-skill
+  commit f9a8a041b85185ee4881b3471d3415e939aac772
+  Les 12 principes, caractères de mouvement, rapport distance / durée
+  (principes-mouvement).
+
+claude-remotion-skill
+  Copyright (c) 2025 haidrrrry
+  https://github.com/haidrrrry/claude-remotion-skill
+  commit 1dcbe5e3fc6cf970bd10d3cc05f0a8a5d19d0383
+  Règles chiffrées de rythme (principes-mouvement), avance du son (son).
+  Aucun code Remotion repris.
+
+gsap-skills
+  Copyright (c) 2026 GreenSock
+  https://github.com/greensock/gsap-skills
+  commit aed9cfd3277740755f6bfc1155c7aa645403b760
+  Bonnes pratiques et pièges des skills gsap-core, gsap-timeline,
+  gsap-plugins, gsap-utils (principes-mouvement/references/gsap.md).
+  Cette licence MIT couvre les skills, pas la bibliothèque GSAP.
+
+MCP for Blender (paquet mcp-for-blender 2.2.7)
+  Copyright (c) 2025 Siddharth Ahuja
+  https://github.com/ahujasid/mcp-for-blender
+  commit 2e4b0bc294694b1570d76ed01be657c22e6d02a0
+  Description des outils, installation, dépannage (blender) ; noms des
+  outils cités dans styles-cinema, styles-jeu-retro, styles-matieres-3d,
+  styles-2-5d-histoire-vraie. Projet tiers, sans lien avec la fondation Blender.
+
+ClaudeAnimationBase
+  Copyright (c) 2026 John Heibel
+  https://github.com/JohnHeibel/ClaudeAnimationBase
+  commit 0ac8bf2b31942376cb6b8c4074715595d512acd2
+  Les 31 émotions jouées et leurs familles, décrites pour un personnage
+  quelconque (personnages ; citées par styles-2-5d-histoire-vraie et
+  formats-flotweb). Le personnage du kit et son code ne sont pas repris.
+
+opus-video-skills (skill painted-animation)
+  Copyright (c) 2026 tuzhechen2005 ; portions Copyright (c) 2026 John Heibel
+  https://github.com/tuzhechen2005/opus-video-skills
+  commit 59744a69c7b916cfbe4c4ec84006b0c2f5e2fde1
+  Règles de jeu et boucle « rendre et regarder » (personnages).
+
+Superpowers (skill brainstorming)
+  Copyright (c) 2025 Jesse Vincent
+  https://github.com/obra/superpowers
+  version 7.0.2, commit 22f0b463e7a5e579904dd6211a520321035526f7
+  Méthode : regarder avant de demander, deux ou trois approches, document
+  écrit, relecture par un regard neuf (studio-coeur, formats-flotweb).
+
+Logiciels et bibliothèques MIT seulement cités (non redistribués) :
+three.js, manim (3Blue1Brown, LLC et la communauté manim : codes de couleur
+et une courbe), Whisper (OpenAI : une commande citée).
+
+
+3. Creative Commons Attribution 4.0 (CC BY 4.0)
+===============================================
+
+Films et images de démo de lemo-opuscar
+  Auteur  : LemoLab
+  Source  : https://github.com/lemomo-ai/lemo-opuscar (commit 9eb7739)
+  Licence : CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+  (texte complet : voir licenses/textes/CC-BY-4.0.txt, lien officiel)
+
+  Ce qui est repris : aucun film ni aucune image n'est copié dans le plugin.
+  Les fiches de styles donnent des liens vers les films, les affiches et la
+  galerie de l'auteur.
+
+  Si un film ou une image est montré (galerie d'aperçus, page de vente),
+  il faut, à côté de chaque aperçu :
+    1. le crédit : « LemoLab » ;
+    2. le lien vers le dépôt : https://github.com/lemomo-ai/lemo-opuscar ;
+    3. la licence et son lien : « CC BY 4.0 » ;
+    4. dire si l'image a été modifiée (recadrée, coupée, son retiré…) ;
+    5. pour diorama-memphis : créditer aussi Eian.
+  Ligne type : « LemoLab, https://github.com/lemomo-ai/lemo-opuscar, CC BY 4.0 »,
+  suivie de « modifié : … » s'il y a lieu.
+
+  Exclusions (elles ne sont PAS sous CC BY 4.0) :
+  - Six pistes de voix : la narration des films Chalkboard, Circuit Board,
+    Desktop Flythrough, Isometric Picture Book et Printed Long Take
+    (Microsoft Edge TTS, service en ligne) et Broadcast News Package
+    (Doubao TTS, conditions de Volcengine). Ne pas les réutiliser, ne pas
+    rediffuser ces films avec leur son. Fiches concernées : tableau-noir-craie,
+    circuit-imprime, survol-bureau, livre-isometrique, plan-sequence-grave,
+    habillage-jt.
+  - Le matériel de tiers dans les démos (rushes, photos, archives, données,
+    musiques, textures) garde sa propre licence, listée dans le fichier
+    CREDITS de chaque démo. Ne pas en extraire de plans.
+  - Les marques, sociétés, mascottes et œuvres montrées dans certaines démos
+    (living-screencast, game-show, news-package, telestrator, countdown, et
+    le film collectif « OPUSCAR 98 ») restent à leurs propriétaires : lien
+    « à consulter » seulement, jamais en vitrine.
+
+Parakeet TDT 0.6B v3 (NVIDIA), CC BY 4.0 : modèle de reconnaissance vocale
+que la commande HyperFrames télécharge chez le client. Non redistribué ici.
+
+
+4. CC0 1.0 (domaine public)
+===========================
+
+Banque de 109 bruitages (skills/son/banque-cc0/)
+  Réunie par Bart (dépôt Barty-Bart/motion-graphics, commit 3d83d98),
+  copiée telle quelle. Tous les sons sont sous CC0 1.0 :
+  https://creativecommons.org/publicdomain/zero/1.0/
+  - paquets Kenney (https://kenney.nl : Interface Sounds, UI Audio, Digital
+    Audio, Impact Sounds, Sci-fi Sounds) ;
+  - sons Freesound vérifiés CC0 par Bart le 12/10/2026.
+  Auteur et page d'origine de chaque fichier :
+  skills/son/banque-cc0/LICENSES.md. Le CC0 ne demande pas de crédit ;
+  il est donné par courtoisie.
+
+Poly Haven (https://polyhaven.com), CC0 : bibliothèque d'assets 3D conseillée
+par les skills blender et styles-matieres-3d. Aucun asset n'est fourni.
+
+
+5. Polices et icônes citées (aucune n'est fournie avec le plugin)
+=================================================================
+
+Les fiches nomment des polices libres à charger depuis leur source
+(Google Fonts le plus souvent). Elles ne sont ni copiées ni revendues.
+  - SIL Open Font License 1.1 (https://openfontlicense.org) : presque toutes
+    les polices citées (Inter, Anton, Caveat, Fredoka, JetBrains Mono, Geist…).
+    Listes complètes dans les fichiers licenses/styles-*.md et licenses/marque.md.
+  - Apache 2.0 : Permanent Marker ; Roboto Condensed selon la version.
+  - GUST Font License : Latin Modern.
+  - ISC : Lucide (icônes), cité par le dépôt de Bart ; non repris.
+La licence de chaque police est à revérifier au moment de l'embarquer dans
+le projet d'un client, et son fichier de licence doit alors la suivre.
+
+
+6. Autres sources
+=================
+
+Cours « How to build a 2.5D motion studio with Opus 5.5 (Full Course) »
+  Article public. Auteur non indiqué dans la copie analysée, pas de dépôt,
+  pas de licence connue. Règles et idées reformulées, sans reprise de texte
+  (blender, personnages, studio-coeur, styles-2-5d-histoire-vraie).
+  Voir « À décider ».
+
+Documentation de Blender (Blender Foundation ; logiciel sous GPL, manuel
+sous CC BY-SA) : options de ligne de commande et API citées. Rien n'est copié.
+
+Palette ENDESGA-32 (publiée librement par ENDESGA), citée dans
+pixel-rpg-16-bits.
+
+Flot Web : les formats du skill formats-flotweb et une partie de la méthode
+d'écriture d'histoire viennent du plugin vidéo interne de Flot Web, rendus
+génériques.
+
+
+7. Ce qui n'est volontairement PAS repris
+=========================================
+
+- Remotion : aucun code, aucun skill. Le dépôt remotion-dev/skills (commit
+  1fc074b) ne contient pas de fichier de licence et n'est pas utilisé. Les
+  parties Remotion de claude-remotion-skill et de claude-motion sont écartées.
+  Le plugin interdit Remotion comme moteur.
+- Sons à licence non redistribuable : Pixabay (dont les bruitages MP3 du
+  skill media-use de HyperFrames), Mixkit (le manifeste de la banque n'en
+  garde que des adresses), Sonniss, bibliothèque audio de YouTube, tout son
+  sous CC BY-NC, ND ou SA. Un client peut s'en servir dans sa vidéo quand la
+  licence le permet ; le plugin ne les distribue pas.
+- Films d'exemple de certains dépôts : ceux de product-launch-motion
+  (propriété d'un client de l'auteur), les vidéos de vitrine du Herk Edit
+  Kit, le film et le logo de Howseen AI, les GIF de Charlie Hills, les
+  vidéos d'aperçu hébergées par HeyGen. Les films de LemoLab ne sont pas
+  copiés non plus (liens seulement).
+- Personnages et mascottes d'auteurs : le personnage de l'auteur de
+  huashu-art-motion, le personnage du kit ClaudeAnimationBase, la mascotte
+  en forme de lettre pi du style math d'animate, toute mascotte tierce vue
+  dans des démos, les héros d'origine de deux styles d'animate.
+- Marques et œuvres : aucun logo, nom de série, de jeu, de film, d'artiste
+  protégé, aucune interface d'application réelle, aucune mélodie existante.
+- Voix : les six pistes de voix exclues de lemo-opuscar ; aucun identifiant
+  de voix.
+- Dépôts clonés pour l'étude mais non utilisés :
+  199-biotechnologies/motion-dev-animations-skill (MIT),
+  zhuyansen/awesome-claude-video-skills (CC0, simple liste).
+
+
+8. À décider (points à remonter à un humain)
+============================================
+
+1. Licence du plugin. Elle n'est pas décidée. Le fichier LICENSE contient
+   un texte provisoire (« Tous droits réservés »). À trancher avant toute
+   vente ou diffusion. Quelle que soit la licence choisie, les composants
+   tiers restent sous leurs licences, et ce NOTICE doit suivre le plugin.
+
+2. GSAP. La bibliothèque GSAP n'est pas sous licence libre : elle est
+   gratuite sous la « Standard No-Charge License » de Webflow
+   (https://gsap.com/community/standard-license/). D'après l'analyse du
+   projet, cette licence interdit, sauf accord écrit, les outils qui
+   permettent de construire des animations visuelles sans code et tout ce
+   qui aide à concurrencer les fonctions d'animation de Webflow. Le
+   propriétaire du plugin dit avoir obtenu une confirmation que la vente est
+   autorisée. Cette confirmation n'est pas dans le dépôt : à conserver par
+   écrit (message daté, nom de la personne chez GSAP / Webflow, périmètre
+   exact) et à ranger avec le plugin. Le texte de la licence est à relire
+   sur le site officiel : il n'est dans aucun clone. Le plugin ne
+   redistribue pas GSAP.
+
+3. Auteur du cours « 2.5D motion studio ». Inconnu dans la copie analysée.
+   Retrouver l'auteur et l'adresse de l'article, puis les ajouter ici et
+   dans licenses/blender.md, personnages.md, studio-coeur.md,
+   styles-2-5d-histoire-vraie.md. Vérifier aussi que rien n'est repris mot
+   pour mot (aucune licence de réutilisation n'est connue pour ce texte).
+
+4. Films d'essai tiers cités dans les fichiers real-sound. Les fichiers
+   copiés tels quels dans skills/son/references/officiel/real-sound/
+   nomment le film d'essai de leur auteur et ses outils (« Clawd »,
+   « Cinetic »). Deux choix : les laisser (copie fidèle, sous MIT), ou les
+   retirer, ce qui en fait des fichiers modifiés à signaler comme tels.
+
+5. Noms « style Ghibli », « style Shinkai », « style Pixar », « style Van
+   Gogh », « style Kirby »… Ils servent de repère d'inspiration dans les
+   descriptions et les fiches, jamais comme affiliation, et les fiches
+   demandent de ne pas les montrer dans une vidéo livrée. À décider : les
+   garder dans les textes visibles par le client (descriptions de skills,
+   page de vente) ou les réserver aux fiches internes. Plusieurs sont des
+   marques ou des noms d'artistes dont les droits sont actifs.
+
+6. Liens vers le film « OPUSCAR 98 ». Deux fiches de
+   styles-2-5d-histoire-vraie (theatre-de-papier, livre-pop-up) donnent un
+   lien vers ce film de LemoLab, qui montre une mascotte tierce et des
+   œuvres adaptées. Les fiches de styles-cinema, tirées du même fichier, ne
+   le lient pas. Choisir une seule règle.
+
+7. Blocs du registry HyperFrames. D'après le backlog, 7 des 15 blocs
+   verticaux décrits dans la copie officielle imitent une application
+   tierce ou sont des publicités. À neutraliser avant usage chez un client.
+
+8. Aperçus. Aucune galerie n'existe encore. Avant d'en publier une :
+   appliquer les crédits CC BY 4.0 de la section 3, placer le texte complet
+   de la licence dans licenses/textes/CC-BY-4.0.txt, et ne jamais montrer
+   en vitrine les démos qui contiennent des marques tierces.
+
+9. Livraison par style. Si les fiches sont un jour servies une par une
+   (par un connecteur), la ligne de copyright et la licence de la source
+   doivent voyager avec chaque fiche, ou ce NOTICE doit être accessible au
+   même endroit.
+
+10. Mentions de modification dans les fichiers. La licence Apache 2.0
+   demande une mention visible dans chaque fichier modifié. Aujourd'hui,
+   seuls skills/rendu/SKILL.md et skills/rendu/references/officiel/NOTICE.md
+   la portent ; les neuf fichiers de skills/rendu/references/ listés en
+   section 1 n'ont pas d'en-tête. À ajouter (une ligne par fichier).
+   La mention « Copyright HeyGen Inc. and contributors » de ce NOTICE.md
+   est aussi à aligner sur la ligne réelle : « Copyright 2026 HeyGen, Inc. ».
+
+11. Polices. Les licences des polices citées n'ont pas été vérifiées une à
+   une (voir section 5).

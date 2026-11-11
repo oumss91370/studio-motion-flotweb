@@ -1,0 +1,12 @@
+{
+  "name": "flotweb",
+  "owner": { "name": "Flot Web" },
+  "metadata": { "description": "Plugins de Flot Web pour Claude Code." },
+  "plugins": [
+    {
+      "name": "studio-motion-flotweb",
+      "source": "./",
+      "description": "Studio de motion design : un socle (installation, parcours, mouvement, rendu, son, marque) et 13 catégories de styles pour produire des vidéos verticales en code, avec HyperFrames et Blender."
+    }
+  ]
+}
