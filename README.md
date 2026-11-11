@@ -27,7 +27,7 @@ Aucun compte n'est nécessaire pour créer et rendre une vidéo sur votre machin
 
 ## Installer le plugin dans Claude Code
 
-Il faut Claude Code, et un accès à ce dépôt (il est privé : votre compte GitHub doit y avoir été invité, et `git` doit être connecté à GitHub sur votre machine, par exemple avec `gh auth login`).
+Il faut Claude Code et `git` installé sur votre machine. Le dépôt est public pendant la phase de test : aucun compte n'est nécessaire.
 
 Dans Claude Code, tapez ces deux commandes l'une après l'autre :
 
