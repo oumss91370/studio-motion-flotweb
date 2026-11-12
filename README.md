@@ -1,11 +1,11 @@
 # studio-motion-flotweb
 
-Version 0.1.0 · plugin pour Claude Code et Claude Desktop · par Flot Web
+Version 0.3.0 · plugin pour Claude Code et Claude Desktop · par Flot Web
 
 ## Ce que fait le plugin
 
 Ce plugin transforme votre assistant en studio de motion design : vous décrivez un sujet, il vous pose quelques questions à choix, puis il fabrique une vidéo verticale entièrement en code.
-Il s'appuie sur un socle de 8 skills (l'installation, le parcours, la marque, le mouvement, le rendu, le son, la 3D, les personnages) et sur 13 catégories de styles prêtes à l'emploi.
+Il s'appuie sur un socle de 9 skills (l'installation, le parcours, la marque, le mouvement, le rendu, le son, la 3D, les personnages, la reproduction d'un reel) et sur 13 catégories de styles prêtes à l'emploi.
 Chaque vidéo passe par trois validations de votre part et par des contrôles mesurés avant d'être livrée.
 
 ## Ce qu'il vous faut
@@ -68,7 +68,7 @@ Le skill `studio-coeur` conduit tout. Dites simplement « fais-moi une vidéo su
 
 Vos retours ouvrent un nouveau tour : l'assistant ne change que ce que vous demandez.
 
-## Les 8 skills du socle
+## Les 9 skills du socle
 
 | Skill | À quoi il sert |
 |---|---|
@@ -80,6 +80,7 @@ Vos retours ouvrent un nouveau tour : l'assistant ne change que ce que vous dema
 | `son` | Bruitages, ambiance, musique, mixage, niveau final, écoute mesurée |
 | `blender` | Décors et objets en 3D, pilotés par le connecteur `blender` |
 | `personnages` | Personnages 2D en pièces, planches d'expressions, jeu d'acteur |
+| `reproduire-reel` | Analyser un reel que vous admirez (découpage, lecture image par image, mesure au pixel) et en refaire la technique avec votre contenu, contrôle chiffré à l'appui ; jamais ses personnages, son texte ni sa musique |
 
 ## Les 13 catégories de styles
 
@@ -120,9 +121,9 @@ Chaque fiche décrit le style de la même façon : identité, palette et typogra
 
 ## État du plugin
 
-Soyons francs : c'est une version 0.2.0, pas encore une version de vente.
+Soyons francs : c'est une version 0.3.0, pas encore une version de vente.
 
-- Les 8 skills du socle et les 130 fiches de style sont **écrits** et relus entre eux.
+- Les 9 skills du socle et les 130 fiches de style sont **écrits** ; les 8 premiers sont relus entre eux. Le neuvième, `reproduire-reel`, a été écrit puis essayé le 12/11/2026 par un agent qui ne connaissait que lui (analyse d'un reel de 56 s : ses mesures concordent avec une mesure indépendante) ; ses étapes de reproduction et de contrôle chiffré reprennent un essai réel du studio mais n'ont pas été rejouées à travers le skill.
 - **12 styles sur 130 ont été vérifiés par un rendu réel** (un par catégorie, HyperFrames 0.9.33, le 11/11/2026) ; leur fiche le dit en section 10. Les 118 autres sont écrits d'après leurs sources, avec des mises en page verticales adaptées de sources souvent pensées en 16:9 : attendez-vous à des ajustements.
 - Les contrôles de livraison, le réglage du niveau sonore et le rendu ont été corrigés d'après ces 12 rendus et essayés sur de vrais fichiers. Aucun film n'a encore été refait de bout en bout avec la version corrigée.
 - **Aucun style Blender n'a été rendu à travers le plugin.** Le format 2.5D a fait l'objet d'un prototype réel ; son kit de départ n'a tourné que sur un exemple réduit, et ses personnages sont en cours de refonte.

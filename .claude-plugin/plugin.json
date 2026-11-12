@@ -1,6 +1,6 @@
 {
   "name": "studio-motion-flotweb",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Studio de motion design Flot Studio : un socle (parcours, mouvement, rendu, son, marque) et des catégories de styles pour produire des vidéos verticales en code, avec HyperFrames et Blender.",
   "author": {
     "name": "Flot Web"

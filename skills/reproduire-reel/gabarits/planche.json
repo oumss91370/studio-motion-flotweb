@@ -1,0 +1,21 @@
+{
+  "sortie": "comparaison-reference-avant-apres.jpg",
+  "colonnes": ["RÉFÉRENCE", "AVANT (version précédente)", "APRÈS (nouvelle version)"],
+  "hauteur_vignette": 768,
+  "cote_zoom": 220,
+  "agrandissement": 3,
+  "lignes": [
+    {
+      "titre": "Plan 1 : le personnage principal se présente (plan en pied, plein jour)",
+      "images": ["../reference/ref.mp4@395", "../rendu_v1/f_0233.jpg", "../rendu_v2/f_0233.jpg"],
+      "zooms": [[515, 890], [540, 700], [540, 700]],
+      "notes": ["réf. image 395 : plan en pied, plein jour", "avant : image 233", "après : image 233 (même instant, même décor)"]
+    },
+    {
+      "titre": "Plan 2 : très gros plan d'objet",
+      "images": ["../reference/ref.mp4@100", "../rendu_v1/f_0632.jpg", "../rendu_v2/f_0632.jpg"],
+      "zooms": [null, null, null],
+      "notes": ["réf. image 100 : très gros plan d'objet", "avant : image 632", "après : image 632"]
+    }
+  ]
+}

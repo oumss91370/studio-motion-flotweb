@@ -1,0 +1,20 @@
+{
+  "formes": [
+    {"ref": "tete-a", "nous": "tete", "nom": "tête", "exclure_angles": [[255, 290]]}
+  ],
+  "coupes": [
+    {"ref": "contour du torse, côté ombre", "nous": "torse, côté ombre", "bande": "sombre"},
+    {"ref": "contour du torse, côté lumière", "nous": "torse, côté lumière", "bande": "sombre"},
+    {"ref": "contour du torse, côté lumière", "nous": "torse, côté lumière", "bande": "claire", "nom": "filet de lumière du torse"}
+  ],
+  "membres": [
+    {"ref": "jambe gauche", "nous": "jambe gauche"}
+  ],
+  "zones": [
+    {"ref": "torse", "nous": "torse"}
+  ],
+  "ombres": [
+    {"ref": "ombre au sol", "nous": "ombre au sol", "melange": {"teinte": "#202d6c", "force": 0.87}}
+  ],
+  "tolerances": {"epaisseur_px": 1, "delta_e": 6, "luminance": 8}
+}

@@ -2,6 +2,8 @@
 
 Format de méthode (le look vient de la vidéo de référence) : on **mesure** un reel existant, on écrit un **cahier de recréation chiffré**, on le reconstruit, puis on **prouve** la ressemblance image par image.
 
+> **Avec le skill `reproduire-reel`.** Cette fiche tient le cahier plan par plan, la reconstruction et le contrôle du rythme du film fini. La **mesure de la référence** (découpage vérifié à l'image, lecture continue de toutes les images, zoom et mesure au pixel du trait, des couleurs, de l'ombrage, des sous-titres), la **fiche de style chiffrée**, le **contrôle chiffré** « référence / nous / écart » et la **critique indépendante des plans de test** sont dans `skills/reproduire-reel/` : commence par lui dès que le client veut le *rendu* d'un reel (personnages dessinés, 2.5D, 3D), pas seulement son rythme. Ses scripts ne sont pas recopiés ici.
+
 ## 1. Identité
 - **Nom** : Recréation de reel. Identifiant : `recreation-reel`.
 - **Inspiration** : le reel que le client envoie (« refais-moi ça », « même accroche », « mêmes animations »).
@@ -49,7 +51,7 @@ Format de méthode (le look vient de la vidéo de référence) : on **mesure** u
 
 **Étape 1, récupérer la référence.** Le client fournit le fichier. Garder l'original intact.
 
-**Étape 2, analyser (en continu + image par image).** `scripts/analyse_reference.sh ref.mp4 analyse/` puis lecture à l'œil (`references/mesurer-une-reference.md` §2) : coupes (deux détecteurs : coupes franches, et fondus), carte des évènements avec le son, rythme, look ; planches toutes les 0,5 s, bandes d'images natives autour de chaque évènement, trois images pleine résolution par plan. Écrire **une fiche par plan, sans exception** :
+**Étape 2, analyser (en continu + image par image).** `scripts/analyse_reference.sh ref.mp4 analyse/` puis lecture à l'œil (`references/mesurer-une-reference.md` §2) ; pour vérifier chaque coupe à l'image, lire toutes les images d'un plan et mesurer au pixel ce qui fait le style : skill `reproduire-reel`, étapes 2 à 6. Ici : coupes (deux détecteurs : coupes franches, et fondus), carte des évènements avec le son, rythme, look ; planches toutes les 0,5 s, bandes d'images natives autour de chaque évènement, trois images pleine résolution par plan. Écrire **une fiche par plan, sans exception** :
 ```
 ## P03 · 2,633–4,100 s (44 images) · entrée : filé de 6 images
 Cadrage : plan serré centré, sujet à 62 % de la hauteur, fond en dégradé radial #1B1F3A → #07080F
@@ -85,7 +87,7 @@ tl.fromTo("#flash", {opacity: 0}, {opacity: 1, duration: 0.05, yoyo: true, repea
 
 **Étape 6, livrer.** La vidéo, la planche référence | nous, le compte rendu en cinq lignes ; puis la porte de livraison du skill `studio-coeur`.
 
-- **Pièges** : une planche à 1 image par seconde rate les flashs et les plans de 2 à 5 images ; confondre un zoom rapide avec une coupe ; grain ajouté avant les contrôles (il cache les images figées) ; cadence variable de la référence ; fond noir derrière la 3D (transparence oubliée).
+- **Pièges** : une planche à 1 image par seconde rate les flashs et les plans de 2 à 5 images ; confondre un zoom rapide avec une coupe ; croire un détecteur de coupes sans regarder les images (un film peut être un quasi plan-séquence relié par des fondus et des déplacements de caméra : skill `reproduire-reel`, étape 2) ; grain ajouté avant les contrôles (il cache les images figées) ; cadence variable de la référence ; fond noir derrière la 3D (transparence oubliée).
 
 ## 7. Son
 - Relever dans la référence : la voix (mots horodatés), la musique (tempo, montée, temps fort), **chaque bruitage avec son instant et l'action qu'il accompagne**.

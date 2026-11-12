@@ -2,6 +2,8 @@
 
 Commun aux formats `fait-3d-en-coupe`, `science-pixel-art`, `histoire-2d-interactive` et `recreation-reel`. Ce protocole vient de dizaines d'épisodes où presque toutes les retouches avaient la même cause : **une référence imaginée au lieu d'être mesurée**, et des défauts vus seulement après le rendu complet.
 
+**Pour aller plus loin que ce protocole** : quand il faut reprendre le *rendu* d'une référence (le trait d'un personnage, son ombrage, ses couleurs exactes, le contour d'un sous-titre) et pas seulement ses plans, passer au skill `reproduire-reel`. Il apporte ce que ce document ne fait pas : la vérification de chaque coupe à l'image, la lecture continue de toutes les images, la mesure au pixel (`mesurer.py`), la fiche de style chiffrée et le tableau « référence / nous / écart » avec tolérances. Ce document garde le tableau des plans, les tailles sur grille, le plan d'implantation et les règles de relecture.
+
 ## 1. Ce qu'on reprend, ce qu'on ne reprend jamais
 
 | On reprend (la forme) | On ne reprend jamais (l'œuvre) |
@@ -46,7 +48,7 @@ Passe automatique : `scripts/analyse_reference.sh <video> <dossier> [dossier de 
 - **Mesurer la taille réelle de chaque élément** : sur une image par plan, tracer une grille de 10 % et relever la boîte de chaque élément important (main, personnage, animal, véhicule, objet vedette). Ces mesures fixent nos tailles et positions. Sans elles, on dessine tout trois fois trop petit et les plans paraissent « très reculés ».
 - **Respecter la mesure sans arrondir vers le haut.** Si l'élément change de taille dans la référence (on s'approche), suivre la courbe, pas une taille fixe.
 - **Relever les transitions et mouvements de caméra en lecture continue, et les recréer** : zoom qui entre dans un objet pour passer à l'intérieur, poussée vers un détail, travelling qui suit l'action. Une coupe sèche avec un fondu au noir ne les remplace pas.
-- **Fiche des personnages et objets vedettes** : couleur exacte relevée à la pipette sur une image pleine taille (jamais « au feeling »), proportions, toutes les positions prises (couché, assis, debout, en marche).
+- **Fiche des personnages et objets vedettes** : couleur exacte relevée à la pipette sur une image pleine taille (jamais « au feeling »), proportions, toutes les positions prises (couché, assis, debout, en marche). Pour l'épaisseur du trait, l'ombrage et les reflets, la pipette ne suffit pas : skill `reproduire-reel`, étape 4.
 - **Identifier l'accroche** : écrire en une phrase ce qui accroche dans les 10 premières secondes (« une maison qui penche au bord d'une falaise », pas « une maison »). Notre ouverture doit faire passer la même idée, avec nos propres plans.
 - Ce tableau est le modèle : on ne change ni un plan, ni une vitesse, ni un ralenti qui n'y est pas, sauf demande du client.
 

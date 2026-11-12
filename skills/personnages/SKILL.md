@@ -24,6 +24,20 @@ Le parcours général vient de `studio-coeur`. Si la fiche « ma chaîne » (ski
 - **Personnage original.** Ne jamais reprendre le personnage, la mascotte ou le dessin d'une autre chaîne, d'une marque ou d'un jeu. On peut étudier la grammaire d'un style, jamais copier un personnage.
 - 2 à 4 personnages par vidéo au maximum ; les figurants sont des variantes (même corps, autre costume, autre couleur).
 
+## Personnage éclairé : trait à pleins et déliés, ombrage, lumière (valeurs mesurées)
+
+Les règles ci-dessus donnent un personnage plat, à trait constant. Quand le style demande un personnage **éclairé** (catégorie `styles-2-5d-histoire-vraie`, ou un reel étudié avec le skill `reproduire-reel`), le studio a mesuré au pixel un rendu de référence et l'a contrôlé sur ses propres personnages. Sept points, détaillés dans `references/trait-et-lumiere-mesures.md` (D = diamètre de la tête) :
+
+1. **Le contour suit une loi, pas une épaisseur** : `épaisseur = 0,044 D − 0,028 D × cos(angle depuis la lumière)`, soit 0,018 D côté lumière et 0,07 D côté ombre. On le construit comme un disque d'encre et un disque de peau plus petit, décalé de 0,028 D vers la lumière. Même règle pour le torse et les coiffes.
+2. **La direction de la lumière à l'écran est un paramètre obligatoire de chaque plan.** Elle commande le côté du plein, du croissant d'ombre, du filet de lumière et de l'ombre au sol. Sans elle, le rendu retombe sur un trait constant.
+3. **La tête n'est pas un aplat** : peau en aplat, plus un croissant d'ombre à bord doux (décalage 0,24 rayon, flou 0,02 D) du côté opposé à la lumière, plus un filet de lumière effilé (0,021 D de large, à 0,033 D du trait) du côté éclairé. Une bande horizontale n'apparaît que sous un chapeau à large bord.
+4. **Une palette par ambiance** (plein jour, coucher de soleil, intérieur, nuit) pour l'encre, les membres, la peau, le croissant et le filet. On change la palette de la peau et du trait, **pas la couleur du costume** ; de nuit la peau reste crème.
+5. **Épaisseurs** : membres 0,056 D, constants ; traits fins du visage 0,0235 D ; sourcils en formes pleines de 0,05 D ; anneau de l'œil 0,22 D, intérieur de la couleur de la peau.
+6. **Une tête légèrement irrégulière** (rapport d'axes 0,91 à 0,98), fixe par personnage.
+7. **La limite ne bouge pas** : on reprend une technique de rendu, jamais un personnage, un costume ou un accessoire d'une autre chaîne.
+
+**Ce qui est vérifié** : le plein jour et le coucher de soleil, sur nos plans de test, avec un contrôle chiffré (35 grandeurs sur 51 dans la tolérance, les autres tenant surtout à la forme propre du dessin de référence). **La nuit et l'intérieur ne sont pas vérifiés** : leurs valeurs sont dans la référence, aucun de nos plans ne les a encore utilisées. Les coiffes éclairées (trois tons) et la jambe du second plan éclaircie ne sont pas faites.
+
 ## Étape 1 : les pièces
 
 Détail, gabarit et conventions de nommage : `references/pieces-svg.md`.
@@ -150,6 +164,7 @@ Dans Blender : `look(mode="frames", frames=[…], view="camera")`. Dans HyperFra
 ## Liste de contrôle
 
 - [ ] Pièces séparées, fond transparent, un seul poids de contour (celui de la fiche de style si elle en donne un), aplats.
+- [ ] Personnage éclairé : la direction de la lumière est déclarée pour chaque plan ; plein, croissant et ombre au sol sont du côté opposé, filet du côté éclairé ; nuit et intérieur signalés comme non vérifiés.
 - [ ] Planche d'expressions validée par le client.
 - [ ] Personnage original (aucun personnage tiers).
 - [ ] 2.5D : matériau émissif, ombre de contact, placé à la marque de mise au point.
@@ -163,6 +178,7 @@ Dans Blender : `look(mode="frames", frames=[…], view="camera")`. Dans HyperFra
 ## Références
 
 - `references/pieces-svg.md` : gabarit, nommage, pivots, export.
+- `references/trait-et-lumiere-mesures.md` : loi du contour, direction de la lumière, ombrage de la tête et du torse, palettes par ambiance, épaisseurs, ombre au sol ; ce qui est vérifié et ce qui ne l'est pas.
 - `references/31-emotions.md` : les 31 émotions jouées, décrites une par une.
 - `references/jeu-d-acteur.md` : la ligne de jeu, les changements d'expression, les bouches, les erreurs.
 - `references/import-blender.md` : plans à matériau émissif, ombre de contact, échange d'expressions.

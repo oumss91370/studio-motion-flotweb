@@ -43,6 +43,7 @@ Ce skill décide **quoi** faire et **dans quel ordre**, et tient les contrôles.
 | « lance / continue mon paramétrage », ou aucune fiche « ma chaîne » n'existe | **Mode paramétrage** ci-dessous |
 | il veut une vidéo et la fiche existe | **Le parcours**, étape 0 |
 | il veut une vidéo tout de suite, sans fiche | propose le paramétrage express (5 questions, skill `marque`), puis le parcours |
+| il envoie un reel (un fichier ou un lien) et dit « refais-moi ça », « je veux ce style », « même rendu » | le skill `reproduire-reel` d'abord : il mesure la technique du reel (découpage, jeu, trait, lumière, sous-titres, son), fait des plans de test et les fait valider ; puis **le parcours** à partir de l'étape 4, avec le sujet et les personnages du client, jamais ceux du reel |
 | il revient avec des notes sur une vidéo livrée | étape 7, un nouveau tour : ne change que ce qu'il demande |
 | « fais comme tu veux » | prends tous les choix recommandés, annonce-les en une liste, et garde quand même les trois validations |
 
