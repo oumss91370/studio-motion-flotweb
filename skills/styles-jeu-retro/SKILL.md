@@ -32,7 +32,7 @@ Le skill `studio-coeur` pilote le parcours. `principes-mouvement` (mouvements ci
 
 Débutant : commence par `jeu-tele-rythmique` ou `pixel-8-bits`.
 
-**Fiche d'ici qui sert aussi à d'autres catégories** : `diorama-pixel` sert à `styles-2-5d-histoire-vraie` (histoire vraie à personnages plats : suivre son `references/pipeline.md` avec la fiche d'ici) et à `styles-matieres-3d`. Une seule fiche par style dans tout le plugin.
+**Fiche d'ici qui sert aussi à d'autres catégories** : `diorama-pixel` sert à `styles-2-5d` (récit à personnages plats : suivre son `references/pipeline.md` avec la fiche d'ici) et à `styles-matieres-3d`. Une seule fiche par style dans tout le plugin.
 
 **Voir aussi (fiches portées par une autre catégorie)** : les formats complets en pixel art (`lecon-pixel-art`, `science-pixel-art`) sont dans `formats-flotweb/styles/<identifiant>/STYLE.md` ; les styles cartoon couverts par la dérogation bleu-violet (`comics-cosmique`, `anime-cellulo-80`) sont dans `styles-cartoon/styles/<identifiant>/STYLE.md`.
 

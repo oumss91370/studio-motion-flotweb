@@ -39,12 +39,12 @@ Le skill `studio-coeur` pilote le parcours. `principes-mouvement` (mouvements ci
 
 Débutant : `isometrique-trait-fin`, puis `ile-low-poly`.
 
-**Fiches d'ici qui servent aussi à d'autres catégories** (une seule fiche par style dans tout le plugin) : `livre-pop-up` sert à `styles-2-5d-histoire-vraie` (encadré « Variante histoire vraie » de la fiche) et à `styles-papier-impression` ; `isometrique-trait-fin` sert à `styles-explicatif-infographie` et à `styles-lancement-produit`.
+**Fiches d'ici qui servent aussi à d'autres catégories** (une seule fiche par style dans tout le plugin) : `livre-pop-up` sert à `styles-2-5d` (encadré « Variante histoire vraie » de la fiche) et à `styles-papier-impression` ; `isometrique-trait-fin` sert à `styles-explicatif-infographie` et à `styles-lancement-produit`.
 
 **Voir aussi (fiches portées par une autre catégorie)** :
 
 - `diorama-pixel` (maquette 3D embrumée à petits personnages en pixel art) : `styles-jeu-retro/styles/diorama-pixel/STYLE.md` ;
-- `theatre-de-papier` (figurines de carton devant des décors en plans parallèles, éclairées à la bougie) : `styles-2-5d-histoire-vraie/styles/theatre-de-papier/STYLE.md` ;
+- `theatre-de-papier` (figurines de carton devant des décors en plans parallèles, éclairées à la bougie) : `styles-2-5d/styles/theatre-de-papier/STYLE.md` ;
 - `vue-eclatee` et `donnees-en-objets` (vrai produit démonté, statistiques en objets filmés en studio) : `styles-montage-documentaire/styles/<identifiant>/STYLE.md`.
 
 ## Blender ou Three.js : ce qui change

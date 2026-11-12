@@ -4,7 +4,7 @@ Rendre un plan de 60 images se fait sans y penser. Rendre un film de 1 800 image
 
 **D'où viennent ces règles.** Un film de 61,5 s (1 845 images en 1080×1920, 36 plans, trois décors, brume volumétrique, personnages plats) rendu par le studio le 11/11/2026 sur un PC Windows à **carte graphique intégrée**, Blender 5.3, EEVEE, piloté par le connecteur MCP. Résultat : 1 h 50 de machine, une dizaine de plantages du pilote graphique, tous repris sans intervention. Ce qui est mesuré ce jour-là est dit « mesuré » ; le reste est une valeur de départ à vérifier sur la machine du client.
 
-Les outils cités (`rendre.py`, `refaire.py`, `suivi.py`) sont ceux du kit de la catégorie `styles-2-5d-histoire-vraie` (`kit/`, lire son `LISEZMOI.md`). Ils valent pour tout film dont la ligne de temps est dans Blender.
+Les outils cités (`rendre.py`, `refaire.py`, `suivi.py`) sont ceux du kit de la catégorie `styles-2-5d` (`kit/`, lire son `LISEZMOI.md`), chaîne à plans émissifs. Ils valent pour tout film dont la ligne de temps est dans Blender. La chaîne mesurée du même kit (`lancer.py`) applique les mêmes règles à un rendu en trois passes : voir `trois-passes-et-matieres-peintes.md`.
 
 ## 1. Profiler avant le rendu complet
 
@@ -141,8 +141,33 @@ Sur le poste du rendu réel, les bibliothèques du connecteur (Poly Haven, Sketc
 - Constat fait en écrivant le kit : EEVEE accepte de rendre sans carte, en rendu logiciel, sur une machine Linux (une image, 35 s au quart de la taille). C'est bon à savoir pour un contrôle, pas pour un film.
 - Un film se rend bien la nuit ou pendant une autre étape (le son, les documents) : la boucle de reprise est faite pour ça.
 
+## 11. Ne pas rendre ce qui ne change pas : une plaque par tronçon de caméra
+
+Vaut pour un décor rendu en passes, quand les personnages sont posés à l'assemblage (chaîne mesurée du kit `styles-2-5d`). Le rendu le plus rapide est celui qu'on ne fait pas.
+
+- Quand la caméra ne fait que dériver, on rend **une seule image de décor** pour tout le tronçon (une « plaque », un peu plus large que le cadre) et on la recadre à l'assemblage.
+- On classe **chaque tronçon de caméra** (coupé aux stations), pas le plan entier, d'après sa parallaxe en pixels : 12 px au plus, la plaque est recadrée par homographie ; de 12 à 120 px, chaque pixel est déplacé selon sa profondeur ; au-delà, ou si un objet du décor bouge, rendu image par image.
+- Avec le kit : `python outils/lancer.py plans` affiche les tronçons, leur mode et le nombre de rendus.
+
+Mesuré le 12/11/2026 sur 4 plans de test d'un décor lourd (3 656 objets réunis en 535), 256 images, carte graphique intégrée :
+
+| Mesure | Valeur |
+|---|---|
+| Image par image, pleine taille | 5,29 s par image ; 22,6 min |
+| Une plaque | 6,1 s en moyenne |
+| Par tronçons | 107 images en 3D et 5 plaques : 9,9 min, soit 2,33 s par image (2,3 fois plus vite) |
+| Écart visible jusqu'à 112 px de parallaxe | 0,13 à 0,52 niveau sur 255 : le bruit entre deux rendus identiques |
+| Image par image, demi-taille (plans de test seulement) | 3,38 s par image (−36 %) |
+
+Où ça trahit : forte parallaxe (à 307 px, le premier plan est étiré ou dédoublé), décor animé (l'objet reste figé), ombres et lampes qui bougent pendant le tronçon. Dans ces cas, rendu image par image. Carte graphique dédiée : non mesuré.
+
+La demi-taille sert à régler des plans de test ; elle ne remplace pas la règle du § 1 : le film se rend et se juge à la taille finale.
+
+Méthode complète, tableaux, limites et estimation pour un film d'une minute : `skills/styles-2-5d/references/rendu-rapide.md`.
+
 ## Liste de contrôle avant un rendu long
 
+- [ ] Tronçons de caméra classés : aucune tenue en dérive rendue image par image sans raison (§ 11).
 - [ ] Temps par image mesuré à pleine taille sur 4 à 6 images ; durée totale annoncée à la personne.
 - [ ] Profil choisi d'après la carte ; mêmes réglages pour tous les plans.
 - [ ] Vue « Standard », aucun blanc brûlé ; brume coupée sur les gros plans, contrôlée en pleine taille.

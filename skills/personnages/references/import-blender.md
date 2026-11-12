@@ -157,7 +157,7 @@ Constat d'un film réel (11/11/2026), trouvé par la critique : un personnage qu
 - Ne poser des clés que sur les axes qui bougent : une clé « tout l'objet » à mi-plan crée des trajets non voulus sur les autres axes.
 - Contrôler : rendre l'image de l'arrivée et la dernière image du plan ; le personnage doit être au même endroit.
 
-Le kit de la catégorie `styles-2-5d-histoire-vraie` le fait dans `Perso.deplace()` et signale une clé non tenue à la construction de la scène (`controle_glissements`).
+Le kit de la catégorie `styles-2-5d` (chaîne à plans émissifs) le fait dans `Perso.deplace()` et signale une clé non tenue à la construction de la scène (`controle_glissements`).
 
 ## Couleur : garder les aplats
 

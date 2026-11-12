@@ -164,7 +164,9 @@ Dès qu'un film a sa ligne de temps dans Blender (plusieurs centaines d'images),
 7. **Brume volumétrique** : motif en damier sur les gros plans à faible échantillonnage ; la couper plan par plan.
 8. **Vue « Standard »** plutôt qu'AgX quand il y a des aplats (personnages plats).
 
-Les outils correspondants (boucle, re-rendu par plages, suivi, profilage) sont dans le kit de la catégorie `styles-2-5d-histoire-vraie` (`kit/`), en Python pour Windows, macOS et Linux.
+Les outils correspondants (boucle, re-rendu par plages, suivi, profilage) sont dans le kit de la catégorie `styles-2-5d` (`kit/`), en Python pour Windows, macOS et Linux.
+
+**Décor peint en trois passes.** Quand le style demande un décor peint dont la lumière se règle par ambiance (style `tete-ronde-trait-plein-delie`), on ne cuit pas la lumière dans le rendu : on rend la couleur, la lumière et les données en trois passes, et on compose ensuite. Méthode, chiffres et pièges : `references/trois-passes-et-matieres-peintes.md`.
 
 ## Export vers HyperFrames
 
@@ -193,7 +195,8 @@ Commandes exactes : `references/rendu-et-export.md`.
 - `references/decor-3-passes.md` : la méthode en 3 passes avec le code.
 - `references/objet-heros.md` : construction et contrôle de l'objet héros.
 - `references/rendu-et-export.md` : moteur, caméras, ligne de commande, export vers HyperFrames.
-- `references/rendu-long-et-fiable.md` : profilage, réglages par carte, boucle de reprise, boucle fantôme, brume, vue « Standard », Poly Haven (rendu réel du 11/11/2026).
+- `references/trois-passes-et-matieres-peintes.md` : décor peint rendu en trois passes (couleur, lumière, données), textures procédurales en diamètres de tête, fusion par matière, petits détails au sol (essai réel du 12/11/2026).
+- `references/rendu-long-et-fiable.md` : profilage, réglages par carte, boucle de reprise, boucle fantôme, brume, vue « Standard », Poly Haven (rendu réel du 11/11/2026) ; § 11 : une plaque de décor par tronçon de caméra (essai du 12/11/2026).
 - `references/bpy-portable.md` : écrire du Python Blender qui marche sur la machine d'un autre.
 
 Crédits : voir `licenses/blender.md` à la racine du plugin.

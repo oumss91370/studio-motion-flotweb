@@ -81,13 +81,89 @@ Catalogue des durées, en nombre d'images. Preuve : `analyse/lecture-continue/�
 
 ## 4. Décors
 
-| Ambiance | Couleurs dominantes (part) | Luminance / contraste / saturation | Ombres | Contours | Preuve |
-|---|---|---|---|---|---|
-| `…` | `#……` (`…` %), `#……`, `#……` | `…` / `…` / `…` | `…` | `…` | `analyse/palettes/….json` |
+Grandeur de référence : **D = `…`**. Images mesurées : `…` (ambiance, type de plan, D en px, figée ou en mouvement). Bande exclue des mesures globales : y = `…` à `…`. Preuves : `analyse/mesures/ref_…_decor.json`, `ref_…_decor_planche.jpg`, `synthese_decor_ref.md`. Méthode : `references/decors-camera-montage-son.md`, § 1.
 
-- Type de rendu : `…`
-- Profondeur de champ : netteté du sujet `…`, du fond `…` (rapport `…`) ; ce qui est flou : `…`
-- Grain, texture : `…`
+### 4.1 Ce qui est en volume, ce qui est peint
+
+| Paire d'images | Plan | Flot médian | Résidu médian | Résidu, 90e centile | Lecture | Preuve |
+|---|---|---|---|---|---|---|
+| `…` → `…` | `…` | `…` px | `…` px | `…` px | `…` | `analyse/parallaxe/…_parallaxe.jpg` |
+
+- En volume : `…` · En plans peints : `…` · Les personnages : `…`
+- Couches de profondeur par ambiance (premier plan / plan du sujet / fond proche / lointain) : `…`
+
+### 4.2 Densité et vocabulaire
+
+| Ambiance | Images | Segments | Petits segments | Bords nets | Bords doux | Objets distincts comptés à l'œil | Familles d'objets |
+|---|---|---|---|---|---|---|---|
+| `…` | `…` | `…` | `…` | `…` % | `…` % | `…` | `…` |
+
+- Parts de l'image par type de plan (ciel / sol / murs / reste) : `…` · Ligne d'horizon : `…` % de la hauteur
+- Tailles en D des éléments récurrents (lame, planche, poteau, lampe, petit objet) : `…`
+
+### 4.3 Matières
+
+| Matière | Image, zone | Couleur | Contraste (écart type) | Lignes : espacement (px, D) | Épaisseur (D) | Profondeur (niveaux) | Couleur des lignes | Grain fin | Dégradé (niveaux) |
+|---|---|---|---|---|---|---|---|---|---|
+| `…` | `…` | `#……` | `…` | `…` | `…` | `…` | `#……` | `…` | `…` |
+
+- Aplat ou texture, matière par matière : `…` · Ce que devient la texture dans le flou, au loin, dans l'ombre : `…`
+
+### 4.4 Contours du décor
+
+| Objet, bord | Image (D) | Épaisseur (px, D) | Couleur |
+|---|---|---|---|
+| silhouette d'un gros objet | `…` | `…` | `#……` |
+| silhouette d'un petit objet | `…` | `…` | `#……` |
+| arête intérieure | `…` | `…` | `#……` |
+| même objet, en bas ou côté ombre | `…` | `…` | `#……` |
+
+- La couleur est-elle celle du trait des personnages ? `…` · Plus épais de quel côté ? `…` · De nuit : `…` · Dans le fond flou : `…`
+
+### 4.5 Lumière et ombres
+
+| Ambiance | Lumière : d'où | Sol éclairé → sol à l'ombre | Facteur par canal (R / V / B) | Bord flou : au contact / à mi-longueur / au bout (D) | Longueur de l'ombre | Mélange retrouvé (teinte, force) |
+|---|---|---|---|---|---|---|
+| `…` | `…` | `#……` → `#……` | `…` / `…` / `…` | `…` / `…` / `…` | `…` | `#……`, `…` % |
+
+- Ombre propre des volumes (face éclairée → face à l'ombre, rapport) : `…` · Tons par face : `…`
+- Dégradés de lumière sur les grandes surfaces : `…` niveaux · Occlusion au pied des murs : `…`
+- Lumières ponctuelles (cœur, rayon à mi-hauteur en D, halo, flaque) : `…`
+
+### 4.6 Palette par ambiance
+
+| Ambiance | Saturation | Luminance | Part des deux premières couleurs | 10 dominantes (part) | Les deux familles de teintes opposées |
+|---|---|---|---|---|---|
+| `…` | `…` | `…` | `…` % | `#……` (`…` %), … | `…` / `…` |
+
+- Ciel, de haut en bas : `#……` → `#……` → `#……` · Nuages : `…` · Écart ciel / sol : `…`
+
+### 4.7 Optique
+
+| Grandeur | Valeur | Preuve |
+|---|---|---|
+| Focale apparente (capteur de 36 mm en hauteur), champ vertical | `…` mm, `…`° (sur `…` image(s) ; segments accordés : `…`) | `focale.py`, image `…` |
+| Convergence des verticales | `…`° : caméra `…` | `…` |
+| Hauteur de caméra | `…` D au-dessus du sol ; l'horizon coupe le personnage `…` | image `…` |
+| **Netteté du sol sous le sujet** | `…` px | `nettete.net_par_bande`, images `…` |
+| Flou du fond, plan moyen / plan large | `…` D / `…` D | cibles `bord`, images `…` |
+| Flou du premier plan | `…` px | `…` |
+| Règle de flou retrouvée | flou ≈ `…` D × \|distance du point ÷ distance du sujet − 1\| ; zone nette : `…` | `…` |
+| Flou de mouvement | `…` | image figée `…`, image en mouvement `…` |
+
+### 4.8 Finitions, lointain, traitement final
+
+| Grandeur | Valeur | Preuve |
+|---|---|---|
+| Détails au sol : densité autour du sujet | `…` par D² | cible `details`, image `…` |
+| Détails au sol : diamètre médian, les plus gros | `…` D, `…` D | `…` |
+| Nature des détails, traces, usure (à l'œil) | `…` | image `…` |
+| Brume de distance | `…` niveaux vers `#……` | deux `zone`, image `…` |
+| Soleil, lune, halos | `…` | cible `halo` |
+| Bords assombris | `…` % dans les coins | `vignettage` |
+| Grain / aberration chromatique / accentuation | `…` / `…` px / `…` niveaux | `…` |
+
+- Type de rendu, en une phrase : `…`
 
 ## 5. Caméra et cadrage
 

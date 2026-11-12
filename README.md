@@ -1,6 +1,6 @@
 # studio-motion-flotweb
 
-Version 0.3.0 · plugin pour Claude Code et Claude Desktop · par Flot Web
+Version 0.4.0 · plugin pour Claude Code et Claude Desktop · par Flot Web
 
 ## Ce que fait le plugin
 
@@ -84,7 +84,7 @@ Vos retours ouvrent un nouveau tour : l'assistant ne change que ce que vous dema
 
 ## Les 13 catégories de styles
 
-Nombre de fiches de style (`STYLE.md`) présentes dans le plugin, comptées sur disque le 11/11/2026 : 130 au total.
+Nombre de skills (`SKILL.md`) et de fiches de style (`STYLE.md`) présents dans le plugin, comptés sur disque le 12/11/2026 par `scripts/verifier_plugin.py` : 22 skills (9 du socle, 13 catégories) et 130 fiches.
 
 | N° | Catégorie | Skill | Fiches |
 |---|---|---|---|
@@ -100,9 +100,9 @@ Nombre de fiches de style (`STYLE.md`) présentes dans le plugin, comptées sur 
 | 10 | Montage et documentaire | `styles-montage-documentaire` | 20 |
 | 11 | Lancement de produit et SaaS | `styles-lancement-produit` | 9 |
 | 12 | Formats Flot Web | `formats-flotweb` | 5 |
-| 13 | 2.5D « histoire vraie » | `styles-2-5d-histoire-vraie` | 2 (plus 2 fiches partagées avec d'autres catégories) |
+| 13 | 2.5D : personnages plats, décor 3D (histoire vraie, fiction, humour, explication) | `styles-2-5d` | 2 (plus 2 fiches partagées avec d'autres catégories) |
 
-En plus des fiches : la catégorie Cinéma contient une bibliothèque de 98 looks rapides, et la catégorie Explicatif un recueil de 16 effets. Une fiche, `livre-pop-up`, existe pour l'instant dans deux catégories (9 et 13).
+En plus des fiches : la catégorie Cinéma contient une bibliothèque de 98 looks rapides, la catégorie Explicatif un recueil de 16 effets, et la catégorie 2.5D un prompt maître (toutes les règles chiffrées de son style principal, en un texte autonome) et un kit de production. Chaque style n'a qu'une fiche dans tout le plugin ; les catégories qui s'en servent sans la porter y renvoient (`docs/styles-partages.md`).
 
 Chaque fiche décrit le style de la même façon : identité, palette et typographie, composition verticale, ce qui bouge, rythme, recette technique, son, liste de contrôle, aperçu, origine.
 
@@ -121,12 +121,13 @@ Chaque fiche décrit le style de la même façon : identité, palette et typogra
 
 ## État du plugin
 
-Soyons francs : c'est une version 0.3.0, pas encore une version de vente.
+Soyons francs : c'est une version 0.4.0, pas encore une version de vente.
 
 - Les 9 skills du socle et les 130 fiches de style sont **écrits** ; les 8 premiers sont relus entre eux. Le neuvième, `reproduire-reel`, a été écrit puis essayé le 12/11/2026 par un agent qui ne connaissait que lui (analyse d'un reel de 56 s : ses mesures concordent avec une mesure indépendante) ; ses étapes de reproduction et de contrôle chiffré reprennent un essai réel du studio mais n'ont pas été rejouées à travers le skill.
 - **12 styles sur 130 ont été vérifiés par un rendu réel** (un par catégorie, HyperFrames 0.9.33, le 11/11/2026) ; leur fiche le dit en section 10. Les 118 autres sont écrits d'après leurs sources, avec des mises en page verticales adaptées de sources souvent pensées en 16:9 : attendez-vous à des ajustements.
 - Les contrôles de livraison, le réglage du niveau sonore et le rendu ont été corrigés d'après ces 12 rendus et essayés sur de vrais fichiers. Aucun film n'a encore été refait de bout en bout avec la version corrigée.
-- **Aucun style Blender n'a été rendu à travers le plugin.** Le format 2.5D a fait l'objet d'un prototype réel ; son kit de départ n'a tourné que sur un exemple réduit, et ses personnages sont en cours de refonte.
+- **Le style 2.5D `tete-ronde-trait-plein-delie` repose sur des mesures** : ses règles chiffrées (prompt maître) viennent d'une mesure au pixel faite par le studio, et ont été essayées sur des plans de test. Un critique indépendant y note le décor 6 sur 10 (7 pour l'extérieur au couchant, 5 pour l'intérieur chaud) : il n'est pas encore au niveau visé, et le plein jour et la nuit ne sont pas essayés. Son kit de production : essayé le 12/11/2026 sur un film de 7 s produit avec lui seul (sujet inventé, 2 plans, 2 personnages) ; contrôle chiffré : 57 lignes sur 61 dans la tolérance ; critique indépendante : 5 sur 10, puis 7 sur 10 après un tour de corrections. Pas de son dans cet essai.
+- **Aucun autre style Blender n'a été rendu à travers le plugin.** L'ancienne chaîne du kit 2.5D (personnages en plans dans Blender) n'a tourné que sur un exemple réduit.
 - Beaucoup de fiches décrivent un moteur de dessin (trame, trait, papier, pixel…) que l'assistant écrit lui-même d'après la fiche : ce code n'est pas fourni. La liste est dans `docs/code-de-depart-manquant.md`.
 - Les outils du connecteur Flot Studio cités dans le paramétrage ne sont pas encore livrés. En attendant, votre fiche « ma chaîne » est un fichier dans votre dossier.
 - Il n'y a pas encore de galerie d'aperçus.

@@ -28,7 +28,7 @@ Fusion : `risographie` réunit le style « Risograph Print » de lemo-opuscar et
 **Voir aussi (fiches portées par une autre catégorie)**, pour ne pas faire de doublon :
 
 - Les **affiches** de huashu-art-motion (Art nouveau, constructiviste, Bauhaus) sont dans `styles-graphique-typo` (`styles-graphique-typo/styles/art-nouveau/STYLE.md`, `…/constructivisme/STYLE.md`, `…/bauhaus/STYLE.md`). Dans cette catégorie, l'affiche est `affiche-serigraphie`.
-- Le **papier découpé rouge** traditionnel et la **lanterne de papier** sont dans `styles-encre-asie` (`papier-decoupe-rouge`, `lanterne-papier`) ; le **livre pop-up** dans `styles-matieres-3d` (`livre-pop-up`) ; le **théâtre de papier** dans `styles-2-5d-histoire-vraie` (`theatre-de-papier`) ; le **papier découpé satirique** et le **comics cosmique** dans `styles-cartoon` (`papier-decoupe-satirique`, `comics-cosmique`).
+- Le **papier découpé rouge** traditionnel et la **lanterne de papier** sont dans `styles-encre-asie` (`papier-decoupe-rouge`, `lanterne-papier`) ; le **livre pop-up** dans `styles-matieres-3d` (`livre-pop-up`) ; le **théâtre de papier** dans `styles-2-5d` (`theatre-de-papier`) ; le **papier découpé satirique** et le **comics cosmique** dans `styles-cartoon` (`papier-decoupe-satirique`, `comics-cosmique`).
 
 ## Comment choisir
 

@@ -33,6 +33,8 @@ Référence : image `…`. Nous : `…`, rendu à la même taille (`…` px), m�
 |---|---|---|---|---|---|
 | `…` | `…` | `…` | `…` | `…` | `…` |
 
+Décor (s'il est contrôlé) : images comparées à cadrage comparable `…` ; tableau complet `controle/controle_decor.md` ; bilan par famille (dans la tolérance / hors / non mesuré) : palette `…`, ombres `…`, texture `…`, contours `…`, flou `…`, densité `…`.
+
 Évolution : tour 0, `…` dans la tolérance et `…` hors ; tour 1, `…` ; … Tolérances changées par rapport aux valeurs par défaut : `…`
 
 ## 4. Plans de test et critique

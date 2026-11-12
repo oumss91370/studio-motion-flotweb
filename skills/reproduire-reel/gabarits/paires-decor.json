@@ -1,0 +1,235 @@
+{
+ "tolerances": {
+  "contour": {
+   "abs": 1
+  },
+  "densite": {
+   "rel": 0.25
+  }
+ },
+ "lignes": [
+  {
+   "famille": "Palette",
+   "type": "palette",
+   "grandeur": "extérieur au couchant",
+   "ref": [
+    "ref_0990",
+    "ref_0795"
+   ],
+   "nous": [
+    "nous_0120",
+    "nous_0200"
+   ]
+  },
+  {
+   "famille": "Ombres",
+   "type": "couleur",
+   "grandeur": "Sol à l'ombre",
+   "ref": [
+    "ref_0990",
+    "sol à l'ombre",
+    "couleur"
+   ],
+   "nous": [
+    "nous_0120",
+    "sol à l'ombre",
+    "couleur"
+   ],
+   "tolerance": "ombre_delta_e"
+  },
+  {
+   "famille": "Ombres",
+   "type": "couleur",
+   "grandeur": "Sol éclairé",
+   "ref": [
+    "ref_0990",
+    "sol éclairé",
+    "couleur"
+   ],
+   "nous": [
+    "nous_0120",
+    "sol éclairé",
+    "couleur"
+   ],
+   "tolerance": "ombre_delta_e"
+  },
+  {
+   "famille": "Ombres",
+   "grandeur": "Dureté du bord de l'ombre, à mi-longueur",
+   "ref": [
+    "ref_0990",
+    "ombre portée : bord, à mi-longueur",
+    "largeur_10_90_px"
+   ],
+   "nous": [
+    "nous_0120",
+    "ombre portée : bord, à mi-longueur",
+    "largeur_10_90_px"
+   ],
+   "tolerance": "durete"
+  },
+  {
+   "famille": "Texture",
+   "grandeur": "Plancher : espacement des joints",
+   "ref": [
+    "ref_1400",
+    "plancher : lames",
+    "ligne_espacement_px"
+   ],
+   "nous": [
+    "nous_0040",
+    "plancher : lames",
+    "periode_px"
+   ],
+   "tolerance": "frequence",
+   "note": "nous : période d'autocorrélation (le fil du bois est compté comme des lignes)"
+  },
+  {
+   "famille": "Texture",
+   "grandeur": "Plancher : contraste",
+   "ref": [
+    "ref_1400",
+    "plancher : lames",
+    "contraste_ecart_type"
+   ],
+   "nous": [
+    "nous_0040",
+    "plancher : lames",
+    "contraste_ecart_type"
+   ],
+   "tolerance": "contraste",
+   "unite": "niveaux"
+  },
+  {
+   "famille": "Contours",
+   "grandeur": "Silhouette d'un gros objet",
+   "ref": [
+    "ref_0990",
+    "poteau : silhouette, côté ombre",
+    "epaisseur_px"
+   ],
+   "nous": [
+    "nous_0120",
+    "colonne : silhouette, côté ombre",
+    "epaisseur_px"
+   ],
+   "tolerance": "contour"
+  },
+  {
+   "famille": "Contours",
+   "grandeur": "Arête intérieure",
+   "ref": [
+    "ref_0990",
+    "poteau : arête intérieure",
+    "epaisseur_px"
+   ],
+   "nous": [
+    "nous_0120",
+    "colonne : arête intérieure",
+    "epaisseur_px"
+   ],
+   "tolerance": "contour"
+  },
+  {
+   "famille": "Contours",
+   "type": "couleur",
+   "grandeur": "Couleur du trait du décor",
+   "ref": "#2f2030",
+   "nous": [
+    "nous_0120",
+    "colonne : silhouette, côté ombre",
+    "couleur"
+   ],
+   "note": "réf. : encre relevée dans la fiche de style"
+  },
+  {
+   "famille": "Flou",
+   "grandeur": "Flou du fond",
+   "ref": [
+    "ref_0990",
+    "fond flou : toit sur le ciel",
+    "largeur_10_90_px"
+   ],
+   "nous": [
+    "nous_0120",
+    "fond flou : toit sur le ciel",
+    "largeur_10_90_px"
+   ],
+   "tolerance": "flou"
+  },
+  {
+   "famille": "Flou",
+   "type": "global",
+   "grandeur": "Netteté du sol sous le sujet",
+   "ref": [
+    "ref_0990",
+    "nettete.net_par_bande.6"
+   ],
+   "nous": [
+    "nous_0120",
+    "nettete.net_par_bande.6"
+   ],
+   "tolerance": "nettete_sol",
+   "unite": "px"
+  },
+  {
+   "famille": "Densité",
+   "type": "global",
+   "grandeur": "Segments",
+   "ref": [
+    "ref_0990",
+    "densite.segments"
+   ],
+   "nous": [
+    "nous_0120",
+    "densite.segments"
+   ],
+   "tolerance": "densite"
+  },
+  {
+   "famille": "Densité",
+   "type": "global",
+   "grandeur": "Petits segments",
+   "ref": [
+    "ref_0990",
+    "densite.petits_segments"
+   ],
+   "nous": [
+    "nous_0120",
+    "densite.petits_segments"
+   ],
+   "tolerance": "densite"
+  },
+  {
+   "famille": "Densité",
+   "grandeur": "Détails au sol par D²",
+   "ref": [
+    "ref_0990",
+    "détails au sol",
+    "densite_par_D2"
+   ],
+   "nous": [
+    "nous_0120",
+    "détails au sol",
+    "densite_par_D2"
+   ],
+   "tolerance": "densite"
+  },
+  {
+   "famille": "Densité",
+   "grandeur": "Diamètre médian des détails, en D",
+   "ref": [
+    "ref_0990",
+    "détails au sol",
+    "diametre_median_D"
+   ],
+   "nous": [
+    "nous_0120",
+    "détails au sol",
+    "diametre_median_D"
+   ],
+   "tolerance": "densite",
+   "unite": "D"
+  }
+ ]
+}

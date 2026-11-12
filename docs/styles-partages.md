@@ -18,9 +18,9 @@ Chemin d'une fiche : `skills/<catégorie qui porte>/styles/<identifiant>/STYLE.m
 | `keynote-produit` | `styles-explicatif-infographie` | `styles-lancement-produit`, `styles-graphique-typo` | vraies captures du produit ; style distinct du précédent, deux fiches voulues |
 | `screencast-vivant` | `styles-explicatif-infographie` | `styles-lancement-produit` | |
 | `collage-enquete` | `styles-explicatif-infographie` | `styles-montage-documentaire` | |
-| `diorama-pixel` | `styles-jeu-retro` | `styles-2-5d-histoire-vraie`, `styles-matieres-3d` | en histoire vraie : parcours `styles-2-5d-histoire-vraie/references/pipeline.md` |
-| `livre-pop-up` | `styles-matieres-3d` | `styles-2-5d-histoire-vraie`, `styles-papier-impression` | fiche fusionnée (film `paper-popup` + look n° 67 d'OPUSCAR 98) ; encadré « Variante histoire vraie » |
-| `theatre-de-papier` | `styles-2-5d-histoire-vraie` | `styles-matieres-3d`, `styles-papier-impression` | |
+| `diorama-pixel` | `styles-jeu-retro` | `styles-2-5d`, `styles-matieres-3d` | pour un récit à personnages plats : parcours `styles-2-5d/references/pipeline.md` |
+| `livre-pop-up` | `styles-matieres-3d` | `styles-2-5d`, `styles-papier-impression` | fiche fusionnée (film `paper-popup` + look n° 67 d'OPUSCAR 98) ; encadré « Variante histoire vraie » (vaut pour tout récit à personnages plats) |
+| `theatre-de-papier` | `styles-2-5d` | `styles-matieres-3d`, `styles-papier-impression` | |
 | `lavis-encre` | `styles-encre-asie` | `styles-peinture-dessin` | fiche fusionnée (lemo-opuscar + huashu) |
 | `art-nouveau` | `styles-graphique-typo` | `styles-papier-impression`, `styles-peinture-dessin` | affiche |
 | `constructivisme` | `styles-graphique-typo` | `styles-papier-impression`, `styles-peinture-dessin`, `styles-montage-documentaire` | affiche dessinée ; ne pas confondre avec `montage-constructiviste` (vraies images) |

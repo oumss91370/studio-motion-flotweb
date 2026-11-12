@@ -19,7 +19,7 @@ Les fiches et la bibliothèque de looks de cette catégorie sont des adaptations
 
 - Les **titres d'œuvres**, les **noms de réalisateurs, d'artistes, de directeurs de la photographie, de studios, de marques de procédés et de lieux**, et toute référence à la **récompense** qui organisait la liste d'origine (dont son nom, qui est une marque). Les champs `title`, `year`, `refs`, `shots`, `direction_*`, `desc_*` ne sont pas repris.
 - La couleur d'exemple du héros, liée dans la source à une mascotte tierce, est remplacée par la convention « [accent] » (couleur de la marque du client).
-- Le film de 6 min 31 s associé à ces prompts met en scène une mascotte tierce et des œuvres protégées : **dans cette catégorie, il n'est ni repris, ni lié, ni montré**. À savoir : deux fiches de `styles-2-5d-histoire-vraie` (`theatre-de-papier`, `livre-pop-up`) donnent, elles, un lien vers ce film (voir `licenses/styles-2-5d-histoire-vraie.md`) ; garder ou retirer ces liens est un point à décider, noté dans la NOTICE.
+- Le film de 6 min 31 s associé à ces prompts met en scène une mascotte tierce et des œuvres protégées : **dans cette catégorie, il n'est ni repris, ni lié, ni montré**. À savoir : deux fiches de `styles-2-5d` (`theatre-de-papier`, `livre-pop-up`) donnent, elles, un lien vers ce film (voir `licenses/styles-2-5d.md`) ; garder ou retirer ces liens est un point à décider, noté dans la NOTICE.
 
 ### Mentions propres aux deux styles
 

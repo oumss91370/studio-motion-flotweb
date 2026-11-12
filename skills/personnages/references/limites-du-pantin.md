@@ -1,10 +1,33 @@
 # Ce que le pantin du kit sait faire, et ce qu'il ne sait pas faire
 
-Le kit 2.5D de la catégorie `styles-2-5d-histoire-vraie` (`kit/personnages.py` pour le dessin, classe `Perso` de `kit/bl_lib.py` pour le montage dans Blender) fournit un pantin plat. Ce document dit honnêtement où il s'arrête, pour qu'on écrive la liste de plans **en fonction de ce qu'il sait faire**, et non l'inverse.
+Le kit 2.5D de la catégorie `styles-2-5d` fournit deux pantins. Ce document dit honnêtement où chacun s'arrête, pour qu'on écrive la liste de plans **en fonction de ce qu'il sait faire**, et non l'inverse.
+
+## Les deux pantins du kit
+
+| | Générateur de la chaîne mesurée (`kit/pantin.py`) | Pantin à plans émissifs (`kit/personnages.py`, classe `Perso` de `kit/bl_lib.py`) |
+|---|---|---|
+| Style | `tete-ronde-trait-plein-delie` | `theatre-de-papier`, ancienne chaîne |
+| Où il vit | dessiné en vectoriel à chaque image, puis posé sur le décor rendu, à l'assemblage (`kit/compo.py`) | plans dans la scène Blender |
+| Rendu | trait à pleins et déliés, croissant, filet, palette par ambiance (`references/trait-et-lumiere-mesures.md`) | plat, trait constant |
+| Vues | **face et trois quarts** (les traits du visage glissent sur la tête) ; ni profil strict ni dos | face seulement |
+| Membres | coude et genou, pieds posés ; poses de marche, de course, de chute ; bras devant ou derrière le torse | bras raide, jambes en une pièce |
+| Mains | bout rond, doigts écartés, index pointé, poing | aucune |
+| Jeu | classe `Anim` : `snap` (pose en une image), `va` (geste), `cligne` (3 images) | clés Blender |
+| Personnages | **décrits par le client** (couleurs, coiffe à trois tons, accessoire) ; aucun personnage tout fait | un exemple à remplacer |
+
+Limites du générateur de la chaîne mesurée, à connaître :
+
+- **Deux vues seulement** : face et trois quarts. Un personnage qui s'éloigne de dos ou marche de profil strict n'existe pas : le cadrer de trois quarts.
+- **Le corps reste un dessin plat face à la caméra** : pas de plongée forte ni de contre-plongée forte sur un personnage.
+- **Tenir un objet** : seulement ce que le générateur sait dessiner dans la main ; un objet 3D du décor n'est pas attaché à la main.
+- **En intérieur chaud, la pose dans le décor n'est pas au niveau** (ombre timide, pas de liseré de lumière côté lampe).
+- **Jambe du second plan éclaircie et coiffes à trois tons** : fait dans le kit ; vérifié par l'essai du kit : les coiffes à trois tons sont dans le film d'essai du 12/11/2026 (jugées conformes par le critique) ; la jambe éclaircie n'apparaît que de trois quarts : elle est vue sur les planches de personnages, pas dans le film d'essai, où les personnages sont de face.
+
+**La suite de ce document décrit le pantin à plans émissifs** (ancienne chaîne).
 
 **D'où ça vient.** Un film réel de 61,5 s, 36 plans et huit pantins, fabriqué par le studio le 11/11/2026 (essai interne, non publié). Son compte rendu le dit sans détour : « aujourd'hui un personnage ne peut être vu que de face ». Plusieurs corrections imposées par la critique venaient de là. Ce qui suit distingue ce qui a été **vu** sur ce film, ce qui a été **essayé** en écrivant le kit, et ce qui est **écrit sans essai**.
 
-## Ce que le pantin sait faire
+## Ce que le pantin à plans émissifs sait faire
 
 | Capacité | Comment | État |
 |---|---|---|
@@ -101,4 +124,4 @@ Elle demande ce que le kit n'a pas : deux pièces de jambe séparées avec un pi
 | Dessin d'un profil, d'un trois quarts, d'un dos | **non fait** : à dessiner et à valider par un humain |
 | Main qui pointe, objet tenu, marche | **écrit sans essai** |
 
-Ce qui manque pour une série, d'après le compte rendu du film : un kit de pantins avec plus de vues, des mains qui pointent, des jambes qui marchent et un générateur de costumes par époque. Rien de cela n'existe encore dans le plugin.
+Ce qui manquait pour une série, d'après le compte rendu de ce film : plus de vues, des mains qui pointent, des jambes qui marchent et un générateur de costumes. Le générateur de la chaîne mesurée (`kit/pantin.py`) apporte le trois quarts, les mains, le coude et le genou, et des personnages décrits par le client ; le profil strict, le dos et un catalogue de costumes par époque restent à faire.

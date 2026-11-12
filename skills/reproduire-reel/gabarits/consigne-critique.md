@@ -16,6 +16,8 @@ Ouvre les images **en grand**, pas seulement la planche. Si un fichier manque ou
 
 Regarde en particulier : `…` (par exemple : le trait, l'ombrage, la lumière sur chaque élément, l'ombre au sol, l'intégration dans le décor, les sous-titres, le jeu).
 
+Si le décor est jugé, regarde aussi : les matières (dessinées ou plates), ce qu'il y a derrière les personnages dans chaque plan (meublé ou vide, lisible ou bouché), les sources de lumière et ce qu'elles éclairent, les ombres portées (couleur, douceur, direction), la netteté du sol sous les pieds et le flou du fond, le trait du décor comparé à celui des personnages, le ciel et le lointain, les objets coupés par le cadre. Donne une note par lieu si les lieux ne se valent pas.
+
 ## Ce que tu rends
 
 1. **Un verdict en deux phrases**, franc.

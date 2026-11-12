@@ -97,3 +97,64 @@ Recadrages à la même échelle, agrandis ×4 au plus proche voisin : on voit le
 ## 8. Le contrôle dans le film
 
 Le rendu de contrôle est propre. Le film passe par une mise en perspective, un assemblage, un encodage. Une fois les plans de test rendus, repasse la mesure sur **une image du film** (`"image": "out/test.mp4@1285"`) : le contour, les couleurs et l'ombrage doivent rester dans les mêmes tolérances, à un demi-pixel près. Note l'écart.
+
+## 9. Le contrôle chiffré du décor
+
+Même principe, avec `mesurer_decor.py` des deux côtés et `comparer_decor.py`. Deux différences avec le contrôle d'un élément dessiné.
+
+**On compare des images à cadrage comparable, pas un élément isolé.** Pour chaque ambiance de la référence, choisis une de ses images mesurées et rends un de nos plans **du même type** (plan large contre plan large, plan moyen contre plan moyen), dans la même ambiance, avec le sujet à une taille voisine. Deux à quatre couples suffisent : un intérieur net pour les textures et les contours, un plan moyen pour les ombres et le flou, un plan large pour la densité et le lointain. Ajoute une ou deux images fixes rendues pour le contrôle si le film ne montre pas l'élément dégagé.
+
+**On compare en D.** Les deux images n'ont pas la même échelle : une longueur de la référence est ramenée à la nôtre (× D nous ÷ D référence), et la remarque de chaque ligne donne le détail. Donne donc D dans les deux fichiers de cibles.
+
+Marche à suivre :
+1. Un fichier de cibles par image de chez nous, avec **les mêmes mesures aux mêmes endroits du décor** (la silhouette d'un gros objet, une arête, le bord d'une ombre à mi-longueur, le sol éclairé et le sol à l'ombre, la texture du sol, une arête du fond, les détails au sol) et **la même `bande_exclue`** que la référence, même si nos sous-titres ne sont pas encore posés.
+2. `python $S/mesurer_decor.py controle/cibles/nous_0120.json controle/mesures`
+3. Le fichier de paires, d'après `gabarits/paires-decor.json` : une ligne par grandeur, avec sa famille et le nom de sa tolérance.
+4. `python $S/comparer_decor.py controle/paires-decor.json controle --ref analyse/mesures --nous controle/mesures --tour 1`
+5. Lis `controle/controle_decor.md` : le tableau, puis le bilan par famille. Corrige, re-rends, re-mesure : **4 tours au plus**. Le suivi s'écrit dans `controle/tours/`.
+
+### Tolérances du décor
+
+| Famille | Grandeur | Tolérance | Nom dans le fichier de paires |
+|---|---|---|---|
+| Palette | chaque dominante de la référence : couleur la plus proche chez nous, et part de nos couleurs qui lui reviennent | ΔE < 8 **et** part à ± 8 points | `palette_delta_e`, `palette_part_pt` |
+| Palette | saturation moyenne ; luminance moyenne | ± 0,08 ; ± 15 niveaux | `saturation`, `luminance` |
+| Ombres | couleur du sol éclairé, du sol à l'ombre | ΔE < 6 | `ombre_delta_e` |
+| Ombres | dureté du bord (largeur 10–90 %) | ± 30 % | `durete` |
+| Texture | fréquence (espacement des joints, période), en D | ± 20 % | `frequence` |
+| Texture | contraste, profondeur des joints, grain fin | ± 6 niveaux | `contraste` |
+| Contours | épaisseur d'un trait (silhouette, arête), à notre échelle | ± 1 px | `contour` |
+| Contours | couleur du trait | ΔE < 6 | `couleur_delta_e` |
+| Flou | flou de profondeur (largeur d'un bord du fond) | ± 25 % | `flou` |
+| Flou | netteté du sol sous le sujet | ± 1 px | `nettete_sol` |
+| Densité | segments, petits segments, détails par D², diamètre des détails | ± 25 % | `densite` |
+
+Celles de la palette, des ombres, de la texture, des contours, du flou et de la densité sont celles du studio. Celles de la saturation, de la luminance et de la netteté du sol ont été fixées lors de l'essai : dis-le si tu les changes.
+
+### Pièges, tirés de l'essai
+
+| Piège | Ce qui se passe | Que faire |
+|---|---|---|
+| **Le fil du bois compté comme des joints** | notre plancher a un fil marqué : `ligne_espacement_px` rend 22 px au lieu de 92, parce que chaque veine est comptée comme une ligne | comparer la **période d'autocorrélation** (`periode_px`) chez nous à l'espacement des lignes de la référence, sur un plan où les lames filent comme dans la référence ; l'écrire dans la `note` de la ligne |
+| **« Segments » compte des zones, pas des objets** | une pièce trop bavarde au sol dépasse de +54 à +133 % ; un plan moyen avec un seul personnage devant un fond flou manque de −45 à −67 % ; aucun des deux chiffres ne dit « ajoute des objets » | lire l'indicateur avec le compte d'objets à l'œil et la planche : il dit **où** l'image est trop chargée ou trop vide, pas quoi poser |
+| **Cadrages non comparables** | un gros plan devant un fond noir et flou contre une grande salle éclairée : 9 dominantes sur 10 hors tolérance, alors que la saturation et la luminance moyennes concordent | comparer une ambiance à une ambiance **au même type de plan** ; sinon, l'écrire et juger sur les ombres, les textures et les contours |
+| **Bande exclue différente** | les sous-titres ajoutent des segments, des bords nets et deux dominantes | même `bande_exclue` des deux côtés ; le script le signale dans la remarque quand elles diffèrent |
+| **Image d'origine contre image du film encodé** | petits segments +9 à +28 %, détails par D² +11 à +25 % ; les couleurs, les flous, les contours et les textures bougent peu (1 à 2 niveaux, 3 %, 0,05 px) | comparer des images du même état ; pour la densité, mesurer notre image **dans le film encodé**, comme celle de la référence |
+| **Deux traits confondus** | un socle dont la silhouette touche une arête : 9,1 px au lieu de 4,6 | poser la coupe là où le trait est seul ; sinon écrire « non mesurable ici » |
+| **Une valeur au bord de la tolérance** | −0,072 arrondi à −0,08 change un verdict | ne pas arrondir avant de comparer ; ne pas régler le kit pour passer une ligne de justesse |
+| **Corriger en post-traitement ce qui vient du rendu** | les ombres longues restent deux fois trop dures (−48 %) après quatre tours de réglage de l'assemblage | quand une ligne ne bouge plus, la cause est en amont (la source de lumière, la matière) : le dire et la reporter |
+
+### Ce que le tableau ne voit pas : la liste de contrôle par plan
+
+Le tableau a validé, dans l'essai, le flou, les ombres et le plancher ; le critique a vu le reste. Avant de lui montrer un plan, vérifie à l'œil :
+
+- [ ] **Rien de nu derrière les personnages** : pas de grand mur vide, des objets dans le champ de **ce** plan (un décor très meublé hors champ ne compte pas).
+- [ ] **Une source de lumière visible** ou lisible (une lampe, une fenêtre, le soleil), et sa flaque sur le sol ou le mur.
+- [ ] **Un contrepoint froid dans une ambiance chaude** (et l'inverse) : une fenêtre sur la nuit, une ombre bleutée.
+- [ ] **Aucun objet coupé par le cadre** de façon gênante, aucune masse inexpliquée au bord.
+- [ ] **Des formes contrastées dans le fond**, pour que le flou reste lisible : un fond flou et sombre sans silhouettes devient un aplat bouché.
+- [ ] **Le sol net sous les pieds**, et le personnage **posé** : son ombre part de ses pieds, dans la direction et la couleur des ombres du décor.
+- [ ] **Les personnages accordés à l'ambiance** (palette de l'ambiance, sans salir les blancs), et flous comme le décor s'ils sont hors du plan de netteté.
+- [ ] **Le trait du décor et celui des personnages de la même main** : même encre, épaisseurs voisines.
+
+Une correction peut introduire un défaut (dans l'essai : une mise au point passée sur le mauvais personnage, des blancs salis par une teinte d'ambiance) : **après un tour de corrections, repasse le contrôle et redemande une note.**

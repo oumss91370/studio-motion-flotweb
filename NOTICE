@@ -163,7 +163,7 @@ lemo-opuscar (code et documents)
     styles-jeu-retro, styles-cinema, styles-matieres-3d,
     styles-montage-documentaire ; les 98 prompts de
     styleboard/opuscar98_styles.json (styles-cinema/references/98-looks.md,
-    et deux fiches de styles-2-5d-histoire-vraie).
+    et deux fiches de styles-2-5d).
   Règles et idées : DIRECTOR.md, MY-STYLES.md, AGENTS.md, readcheck.mjs
     (studio-coeur, marque), TECHNIQUE.md (personnages).
   Style contribué : « Memphis Diorama », style et démo par Eian
@@ -305,14 +305,14 @@ MCP for Blender (paquet mcp-for-blender 2.2.7)
   commit 2e4b0bc294694b1570d76ed01be657c22e6d02a0
   Description des outils, installation, dépannage (blender) ; noms des
   outils cités dans styles-cinema, styles-jeu-retro, styles-matieres-3d,
-  styles-2-5d-histoire-vraie. Projet tiers, sans lien avec la fondation Blender.
+  styles-2-5d. Projet tiers, sans lien avec la fondation Blender.
 
 ClaudeAnimationBase
   Copyright (c) 2026 John Heibel
   https://github.com/JohnHeibel/ClaudeAnimationBase
   commit 0ac8bf2b31942376cb6b8c4074715595d512acd2
   Les 31 émotions jouées et leurs familles, décrites pour un personnage
-  quelconque (personnages ; citées par styles-2-5d-histoire-vraie et
+  quelconque (personnages ; citées par styles-2-5d et
   formats-flotweb). Le personnage du kit et son code ne sont pas repris.
 
 opus-video-skills (skill painted-animation)
@@ -415,7 +415,7 @@ le projet d'un client, et son fichier de licence doit alors la suivre.
 Cours « How to build a 2.5D motion studio with Opus 5.5 (Full Course) »
   Article public. Auteur non indiqué dans la copie analysée, pas de dépôt,
   pas de licence connue. Règles et idées reformulées, sans reprise de texte
-  (blender, personnages, studio-coeur, styles-2-5d-histoire-vraie).
+  (blender, personnages, studio-coeur, styles-2-5d).
   Voir « À décider ».
 
 Documentation de Blender (Blender Foundation ; logiciel sous GPL, manuel
@@ -483,7 +483,7 @@ génériques.
 3. Auteur du cours « 2.5D motion studio ». Inconnu dans la copie analysée.
    Retrouver l'auteur et l'adresse de l'article, puis les ajouter ici et
    dans licenses/blender.md, personnages.md, studio-coeur.md,
-   styles-2-5d-histoire-vraie.md. Vérifier aussi que rien n'est repris mot
+   styles-2-5d.md. Vérifier aussi que rien n'est repris mot
    pour mot (aucune licence de réutilisation n'est connue pour ce texte).
 
 4. Films d'essai tiers cités dans les fichiers real-sound. Les fichiers
@@ -501,7 +501,7 @@ génériques.
    marques ou des noms d'artistes dont les droits sont actifs.
 
 6. Liens vers le film « OPUSCAR 98 ». Deux fiches de
-   styles-2-5d-histoire-vraie (theatre-de-papier, livre-pop-up) donnent un
+   styles-2-5d (theatre-de-papier, livre-pop-up) donnent un
    lien vers ce film de LemoLab, qui montre une mascotte tierce et des
    œuvres adaptées. Les fiches de styles-cinema, tirées du même fichier, ne
    le lient pas. Choisir une seule règle.

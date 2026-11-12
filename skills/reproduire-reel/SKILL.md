@@ -26,8 +26,11 @@ Reel de 56 s, 1 682 images, un agent et ses sous-agents, sur un PC de bureau.
 |---|---|---|
 | Lecture continue et premier kit | découpage, lecture des 1 682 images par quatre agents en parallèle, écoute du son, fiche de style, nouveau kit de personnages, 4 plans de test (8 s) | ≈ 1 h 10, dont ≈ 30 min d'analyse |
 | Mesure au pixel et second kit | scripts de mesure (≈ 25 min, déjà écrits ici), mesure de 11 images (≈ 10 min), kit refait et contrôle chiffré en 4 tours (≈ 15 min), deux rendus de 9 min des plans de test (≈ 20 min), critique et corrections | ≈ 1 h 15 |
+| Mesure et reconstruction du décor | choix et extraction de 20 images (≈ 10 min) ; scripts de mesure du décor, pose des cibles, mesures, parallaxe, focale (≈ 25 min, scripts déjà écrits ici) ; scène 3D de deux lieux, matières dessinées, passes, assemblage, 12 essais (≈ 55 min) ; rendus des 4 plans de test, dont deux interrompus (≈ 60 min, le bon : 39 min 40 s pour 258 images) ; contrôle chiffré en 4 tours et planches (≈ 30 min) ; assemblage du film de test, deux fois (≈ 45 min, en partie en parallèle) ; critique, corrections, nouvelle notation (≈ 20 min) | ≈ 3 h 40 |
 
-À dire au client : **compte 2 heures pour l'analyse et des plans de test fidèles** d'un reel d'une minute ; le film entier vient ensuite, avec son propre temps de rendu. Avec les scripts fournis, la mesure au pixel elle-même est courte : c'est le choix des images, la pose des cibles et les tours de correction qui prennent le temps.
+À dire au client : **compte 2 heures pour l'analyse et des plans de test fidèles** d'un reel d'une minute quand le décor est simple ou déjà construit, et **une demi-journée de plus quand il faut mesurer et reconstruire un décor en volume** (une demi-journée par lieu supplémentaire) ; le film entier vient ensuite, avec son propre temps de rendu. Avec les scripts fournis, la mesure au pixel elle-même est courte : c'est le choix des images, la pose des cibles, la construction et les tours de correction qui prennent le temps.
+
+Résultat à annoncer sans l'embellir : après ce tour, le décor reconstruit a été noté **6 sur 10** par le critique indépendant (un extérieur à 7, un intérieur à 5), contre 3,5 avant la mesure et 9 pour la référence, avec 34 grandeurs sur 61 dans la tolérance. La mesure rapproche nettement ; elle ne suffit pas à atteindre la référence en un tour.
 
 Repère tiré de l'essai de ce skill par un agent seul, sur le même reel : découpage vérifié à l'image, lecture continue de 3 plans, mesure de 4 images (6 têtes, un torse, un sous-titre), fiche remplie : **20 minutes**. Les scripts comptent pour moins de 4 minutes là-dedans (découpage 1 à 2 min, extraction de 4 images ≈ 25 s, mesure 3 à 7 s par image).
 
@@ -38,7 +41,7 @@ Repère tiré de l'essai de ce skill par un agent seul, sur le même reel : déc
 | Le parcours d'une vidéo (questions, histoire, storyboard, revue, livraison) | `studio-coeur` |
 | Le cahier de recréation plan par plan, le contrôle du rythme (`controle_rendu.py`) | `formats-flotweb`, fiche `recreation-reel` |
 | Construire les personnages | `personnages` |
-| Décors, objets et rendus 3D ou 2.5D | `blender`, `styles-2-5d-histoire-vraie` (kit) |
+| Décors, objets et rendus 3D ou 2.5D | `blender`, `styles-2-5d` (kit) |
 | Assembler, sous-titrer, exporter | `rendu` |
 | Écouter et refaire le son | `son` |
 
@@ -60,11 +63,16 @@ Lance-les depuis le dossier de travail du client, avec `PYTHONDONTWRITEBYTECODE=
 | `grille.py` | recadrage avec grille de coordonnées, pour poser les cibles | 4 |
 | `mesurer.py` | mesure au pixel d'après un fichier de cibles : chiffres, courbes, planche annotée | 4 et 8 |
 | `synthese.py` | tableau de toutes les formes mesurées, loi commune du contour, palette par ambiance | 4 et 6 |
-| `palette.py` | palette et look d'une image ou d'une zone (décors, netteté d'une zone) | 5 |
+| `palette.py` | palette et look d'une image ou d'une zone (contrôle rapide, netteté d'une zone) | 5 |
+| `mesurer_decor.py` | mesure au pixel du **décor**, d'après la rubrique `decor` du même fichier de cibles : matières, contours, ombres, lampes, détails au sol, netteté, plus la palette, la densité et le grain de l'image | 5 et 8 |
+| `synthese_decor.py` | palette commune et indicateurs par ambiance, relevé de toutes les mesures du décor en D | 5 et 6 |
+| `parallaxe.py` | ce qui est en volume et ce qui est peint, entre deux images d'un mouvement de caméra | 5 |
+| `focale.py` | focale apparente et tenue de la caméra, par les points de fuite | 5 |
 | `comparer.py` | tableau « référence / nous / écart » avec tolérances, courbes superposées, suivi des tours | 8 |
+| `comparer_decor.py` | le même tableau pour le décor, d'après un fichier de paires, avec les tolérances du décor et le bilan par famille | 8 |
 | `cote_a_cote.py` | planche de comparaison à deux ou trois colonnes, recadrages agrandis | 8 et 9 |
 
-Dossier de travail : `reproductions/<nom-court>/` dans le dossier du client, avec `reference/` (la vidéo), `analyse/` (`decoupage/`, `bandes/`, `lecture-continue/`, `images/`, `cibles/`, `mesures/`, `palettes/`), `fiche-reference.md`, `controle/`, `revue/`.
+Dossier de travail : `reproductions/<nom-court>/` dans le dossier du client, avec `reference/` (la vidéo), `analyse/` (`decoupage/`, `bandes/`, `lecture-continue/`, `images/`, `cibles/`, `mesures/`, `parallaxe/`, `palettes/`), `fiche-reference.md`, `controle/`, `revue/`.
 
 ## Le parcours
 
@@ -123,9 +131,33 @@ C'est l'étape qui a fait la différence. Détail complet et format du fichier d
 8. **Chercher la loi** : `python $S/synthese.py analyse/mesures --prefixe ref_`. Deux questions : `a0` et `h1` sont-ils les mêmes, en fraction de D, d'une forme à l'autre et d'une taille à l'autre ? Le côté fin du trait est-il le côté clair de l'ombrage (colonne « Écart délié / clair », une mesure indépendante du contour) ? Dans notre essai : oui deux fois (écart médian de 8°), d'où la règle « trait fin côté lumière, épais côté ombre, en simple cosinus ». **C'est la règle qu'on reproduit**, pas la courbe d'une image.
 
 ### 5. Décors, caméra, montage, sous-titres, son
-Ce qu'on mesure et comment : `references/decors-camera-montage-son.md`. En bref :
-- **Décors** : une palette par ambiance (`palette.py` sur l'image nette d'un plan de chaque ambiance), le traitement des ombres (une cible `ombres` : sol éclairé, sol à l'ombre, facteur par canal : une ombre teintée n'est pas une multiplication), les contours du décor (cibles `coupes`), le grain (`zones`).
-- **Profondeur de champ** : la netteté d'une zone du sujet comparée à celle du fond (`palette.py --boite`), et la largeur de transition des bords.
+Ce qu'on mesure et comment : `references/decors-camera-montage-son.md`.
+
+**Le décor se mesure comme les personnages**, avant de le construire. Dans notre essai, un décor fait d'après l'idée générale (« aplats saturés, contour, ombre bleue ») était noté 3,5 sur 10 ; ses matières avaient 2 niveaux de contraste là où la référence en a 8 à 21. Compte 15 à 20 images (toutes les ambiances ; un plan large, un plan moyen et un gros plan par ambiance), note D sur chacune, pose les cibles dans la rubrique `"decor"` du fichier de cibles (`references/fichier-de-cibles.md`, § 8), puis :
+```
+python $S/parallaxe.py reference/ref.mp4 analyse/parallaxe 688:690,1379:1380 --bande 1270,1430
+python $S/mesurer_decor.py analyse/cibles/ref_1400.json analyse/mesures
+python $S/synthese_decor.py analyse/mesures --prefixe ref_
+python $S/focale.py analyse/images/ref_1650.png --bande 1270,1430
+```
+Neuf familles, toutes exprimées **en D** (`references/decors-camera-montage-son.md`, § 1) :
+
+| N° | Famille | Ce qu'on relève |
+|---|---|---|
+| 1 | Volume ou peint | par la parallaxe : ce qui est un vrai volume, ce qui est un plan peint lointain ; les couches de profondeur par ambiance |
+| 2 | Densité et vocabulaire | segments et bords par image, objets comptés à l'œil et leurs familles, parts de l'image, tailles en D |
+| 3 | Matières | aplat ou texture ; fréquence des joints, contraste, fil, couleur des lignes |
+| 4 | Contours du décor | silhouette et arêtes : épaisseurs, couleur, côté épais |
+| 5 | Lumière et ombres | couleur des ombres (un bleu qui **augmente** = un mélange vers une teinte, pas une multiplication), dureté du bord au contact et au loin, tons par face, dégradés, lampes et flaques |
+| 6 | Palette par ambiance | 10 dominantes, saturation, luminance, les deux familles de teintes opposées |
+| 7 | Optique | focale, hauteur de caméra, flou du fond, **netteté du sol sous le sujet**, règle de flou selon la distance |
+| 8 | Finitions au sol | détails par D², diamètre, nature |
+| 9 | Lointain et traitement final | ciel, soleil, brume, bords assombris, grain |
+
+Exclus la bande des sous-titres des mesures globales (`"bande_exclue"`), et ouvre chaque `<id>_decor_planche.jpg`. Le § 1.11 de la référence donne **le diagnostic type** : les six causes, dans l'ordre, d'un décor qui ne ressemble pas, avec la mesure qui révèle chacune.
+
+Le reste, en bref :
+- **Profondeur de champ, contrôle rapide** (reel sans décor construit) : la netteté d'une zone du sujet comparée à celle du fond (`palette.py --boite`), et la largeur de transition des bords.
 - **Caméra et cadrage** : type de cadrage et taille du sujet dans le cadre par plan, durée des tenues et des déplacements, freinage, dérive en pixels par seconde, lus sur les bandes et sur `mouvement.csv`.
 - **Montage** : durée des plans (médiane, extrêmes), type et durée de chaque transition, en images.
 - **Sous-titres** : une cible `rectangle` avec `"composantes": "toutes"`, tracée large autour du texte, donne la hauteur des lettres, la boîte et le centre du texte, la couleur du remplissage et du contour, l'épaisseur du contour dans chaque direction (un contour plus épais en bas à droite révèle une ombre décalée) ; le nombre de mots et la durée de chaque carton se comptent sur les bandes.
@@ -138,8 +170,17 @@ Montre la fiche au client en cinq lignes (ce qui fait le style, chiffré) et fai
 
 ### 7. Reproduire
 Construis le kit **d'après les mesures**, avec le contenu du client :
-- **personnages** : skill `personnages` (pièces, expressions, jeu), avec les rapports mesurés (épaisseurs en fraction de D, loi du contour, palettes par ambiance, direction de la lumière par plan) ; pour la 2.5D, le kit de `styles-2-5d-histoire-vraie` ;
-- **décors et objets** : skill `blender` (3D, 2.5D) ou `rendu` (2D), avec la palette par ambiance, le traitement des ombres et la profondeur de champ mesurés ;
+- **personnages** : skill `personnages` (pièces, expressions, jeu), avec les rapports mesurés (épaisseurs en fraction de D, loi du contour, palettes par ambiance, direction de la lumière par plan) ; pour la 2.5D, le kit de `styles-2-5d` ;
+- **décors et objets** : skill `blender` (3D, 2.5D) ou `rendu` (2D). Chaque famille mesurée devient un réglage, en D :
+  - **ce qui est en volume** se construit en volume, **ce qui est peint** se pose en plans peints lointains ;
+  - **matières dessinées** à la fréquence et au contraste mesurés (joints, fil dans le sens de la pièce), jamais un aplat taché ;
+  - **contours** à deux épaisseurs (silhouette, arête), dans l'encre de l'ambiance, plus épais en bas et côté ombre ;
+  - **ombres par mélange** vers la teinte mesurée, à la force mesurée, bord de plus en plus doux en s'éloignant de l'objet ; deux tons par face ; flaques de lumière autour des lampes ;
+  - **palette de l'ambiance**, avec son contrepoint ;
+  - **profondeur de champ** selon la règle mesurée, mise au point sur le sujet, **sol net sous ses pieds** ;
+  - **finitions au sol** à la densité et à la taille mesurées ; **ciel, brume, bords assombris** aux valeurs mesurées.
+
+  Deux conseils de l'essai : **sépare la couleur de la lumière** au rendu (une passe de couleur peinte, une passe de lumière, une passe de profondeur et de normales), pour régler une ambiance en quelques secondes au lieu de relancer le rendu ; et **meuble le champ de chaque plan** : un décor riche hors champ ne compte pas. Les lieux, les bâtiments, les meubles et les accessoires sont ceux de l'histoire du client, jamais ceux de la référence ;
 - **sous-titres** : skill `rendu`, avec la hauteur, la position, le contour et le nombre de mots mesurés ;
 - **jeu et caméra** : les durées du catalogue (en images), pas des valeurs par défaut ;
 - **son** : skill `son` : nos sons, calés sur nos gestes avec le décalage mesuré ; jamais la musique ni la voix de la référence.
@@ -155,6 +196,15 @@ Méthode complète : `references/controle-chiffre.md`.
 4. Corrige le kit, re-rends, re-mesure, recompare : **4 tours au plus** (`--tour 1` à `--tour 4`, le suivi s'écrit dans `controle/tours/`).
 5. Une ligne hors tolérance qui vient de la forme propre d'un dessin (bosses d'un trait fait à la main, objet qui touche le contour) **ne se corrige pas** : compare alors ta courbe à **la loi** de la référence, et écris pourquoi la ligne reste rouge.
 6. Planche côte à côte agrandie : `python $S/cote_a_cote.py --ref analyse/images/ref_0990.png --nous controle/nous.png -o revue/element-ref-vs-nous.jpg --zoom-ref 351,840,110 --zoom-nous 400,700,110 --k 4`.
+
+**Le décor a son propre contrôle** (`references/controle-chiffre.md`, § 9), sur des images **à cadrage comparable** (même ambiance, même type de plan), comparées **en D** :
+```
+python $S/mesurer_decor.py controle/cibles/nous_0120.json controle/mesures
+python $S/comparer_decor.py controle/paires-decor.json controle --ref analyse/mesures --nous controle/mesures --tour 1
+```
+Tolérances : **palette ΔE < 8 et parts à ± 8 points ; couleur d'ombre ΔE < 6, dureté ± 30 % ; texture : fréquence ± 20 %, contraste ± 6 niveaux ; contours ± 1 px ; flou de profondeur ± 25 % ; netteté du sol ± 1 px ; densité ± 25 %.** Quatre tours au plus, là aussi. Trois pièges : un fil du bois marqué est compté comme des joints (compare la période d'autocorrélation) ; l'indicateur « segments » compte des zones de couleur, pas des objets ; une ligne qui ne bouge plus après deux tours de réglage a sa cause en amont, dans le rendu. Dans notre essai : 23 lignes dans la tolérance sur 59 au premier assemblage, 37 sur 61 au quatrième tour, 34 après les corrections demandées par le critique (elles ont fait perdre trois lignes, et l'œil y a gagné : c'est un choix, on l'écrit).
+
+Puis la **liste de contrôle par plan**, que le tableau ne remplace pas : rien de nu derrière les personnages, une source de lumière visible, un contrepoint froid dans une ambiance chaude, aucun objet coupé par le cadre, des formes contrastées dans le fond, le sol net et le personnage posé.
 
 ### 9. Plans de test, puis critique indépendante
 Détail et consigne du critique : `references/plans-de-test-et-critique.md`.
@@ -182,6 +232,8 @@ Après son accord seulement, le film entier suit le parcours de `studio-coeur` �
 - [ ] Fiche de style : aucune ligne sans chiffre ni image ; tableau « on reprend / on ne reprend pas » confirmé par le client.
 - [ ] Aucun personnage, costume, accessoire, texte, voix, musique, logo ni sujet du reel étudié.
 - [ ] Contrôle chiffré fait avec les mêmes scripts, élément rendu à la même taille ; 4 tours au plus ; lignes rouges expliquées.
+- [ ] Décor : mesuré avant d'être construit (parallaxe, matières, contours, ombres, palette, optique, finitions, lointain), toutes les ambiances, tout en D ; la même bande exclue des deux côtés ; chaque planche `_decor_planche.jpg` ouverte.
+- [ ] Décor : contrôle chiffré sur des images à cadrage comparable, bilan par famille écrit ; liste de contrôle par plan passée ; aucun lieu, bâtiment, meuble ni accessoire de la référence.
 - [ ] Plans de test critiqués par un agent indépendant ; remarques triées avec la mesure ; note écrite telle quelle.
 - [ ] Temps annoncé avant, temps réel écrit après.
 - [ ] Aucune tâche ne tourne quand tu rends la main.
@@ -192,12 +244,12 @@ Après son accord seulement, le film entier suit le parcours de `studio-coeur` �
 |---|---|---|
 | `references/droits-et-limites.md` | ce qu'on reprend, ce qu'on refuse, comment le dire, récupérer la référence | avant de commencer |
 | `references/lecture-continue.md` | lire une bande, mesurer des durées, partager le travail | étape 3 |
-| `references/fichier-de-cibles.md` | choisir les images, format du fichier de cibles, lire les sorties, limites de la mesure | étape 4 |
-| `references/decors-camera-montage-son.md` | ce qu'on mesure hors personnages, et comment | étape 5 |
-| `references/controle-chiffre.md` | rendu de contrôle, fichier de paires, tolérances, tours | étape 8 |
+| `references/fichier-de-cibles.md` | choisir les images, format du fichier de cibles, lire les sorties, limites de la mesure ; § 8 : la rubrique `decor` | étapes 4 et 5 |
+| `references/decors-camera-montage-son.md` | § 1 : la méthode complète du décor (neuf familles) et le diagnostic type « pourquoi mon décor ne ressemble pas » ; puis caméra, montage, sous-titres, son | étape 5 |
+| `references/controle-chiffre.md` | rendu de contrôle, fichier de paires, tolérances, tours ; § 9 : le contrôle du décor, ses tolérances, ses pièges, la liste de contrôle par plan | étape 8 |
 | `references/plans-de-test-et-critique.md` | plans de test, planche à trois colonnes, consigne et tri de la critique | étape 9 |
 | `gabarits/lecture-continue.md` | tableau image par image à remplir | étape 3 |
-| `gabarits/cibles.json`, `paires.json`, `planche.json` | fichiers d'exemple à adapter | étapes 4, 8, 9 |
+| `gabarits/cibles.json`, `paires.json`, `paires-decor.json`, `planche.json` | fichiers d'exemple à adapter (les coordonnées sont des exemples) | étapes 4, 5, 8, 9 |
 | `gabarits/fiche-reference.md` | la fiche de style de la référence | étape 6 |
 | `gabarits/consigne-critique.md` | consigne à donner au critique indépendant | étape 9 |
 | `gabarits/compte-rendu.md` | compte rendu au client | étape 10 |

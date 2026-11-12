@@ -4,24 +4,291 @@
   "ambiance": "coucher de soleil",
   "plan": "plan en pied",
   "note": "plan figé (écart avec les images voisines : 2,6 et 1,7) ; décor flou derrière le personnage",
-  "reference": {"nom": "D (diamètre de la tête)", "forme": "tete-a"},
+  "reference": {
+    "nom": "D (diamètre de la tête)",
+    "forme": "tete-a"
+  },
   "formes": [
-    {"nom": "tete-a", "type": "cercle", "centre": [351, 840], "rayon": 148},
-    {"nom": "torse-a", "type": "polygone", "points": [[215, 1010], [490, 1010], [490, 1330], [215, 1330]], "graine": [330, 1180],
-     "exclure": [[380, 1230, 490, 1330]]},
-    {"nom": "sous-titre", "type": "rectangle", "boite": [240, 1290, 840, 1410], "composantes": "toutes", "remplissage": "clair"}
+    {
+      "nom": "tete-a",
+      "type": "cercle",
+      "centre": [
+        351,
+        840
+      ],
+      "rayon": 148
+    },
+    {
+      "nom": "torse-a",
+      "type": "polygone",
+      "points": [
+        [
+          215,
+          1010
+        ],
+        [
+          490,
+          1010
+        ],
+        [
+          490,
+          1330
+        ],
+        [
+          215,
+          1330
+        ]
+      ],
+      "graine": [
+        330,
+        1180
+      ],
+      "exclure": [
+        [
+          380,
+          1230,
+          490,
+          1330
+        ]
+      ]
+    },
+    {
+      "nom": "sous-titre",
+      "type": "rectangle",
+      "boite": [
+        240,
+        1290,
+        840,
+        1410
+      ],
+      "composantes": "toutes",
+      "remplissage": "clair"
+    }
   ],
   "coupes": [
-    {"nom": "contour du torse, côté ombre", "groupe": "torse", "a": [200, 1120], "b": [300, 1120]},
-    {"nom": "contour du torse, côté lumière", "groupe": "torse", "a": [385, 1100], "b": [495, 1100]}
+    {
+      "nom": "contour du torse, côté ombre",
+      "groupe": "torse",
+      "a": [
+        200,
+        1120
+      ],
+      "b": [
+        300,
+        1120
+      ]
+    },
+    {
+      "nom": "contour du torse, côté lumière",
+      "groupe": "torse",
+      "a": [
+        385,
+        1100
+      ],
+      "b": [
+        495,
+        1100
+      ]
+    }
   ],
   "membres": [
-    {"nom": "jambe gauche", "a": [312, 1340], "b": [312, 1600], "n": 9, "demi": 28}
+    {
+      "nom": "jambe gauche",
+      "a": [
+        312,
+        1340
+      ],
+      "b": [
+        312,
+        1600
+      ],
+      "n": 9,
+      "demi": 28
+    }
   ],
   "zones": [
-    {"nom": "torse", "poly": [[270, 1080], [400, 1080], [400, 1200], [270, 1200]], "k": 3}
+    {
+      "nom": "torse",
+      "poly": [
+        [
+          270,
+          1080
+        ],
+        [
+          400,
+          1080
+        ],
+        [
+          400,
+          1200
+        ],
+        [
+          270,
+          1200
+        ]
+      ],
+      "k": 3
+    }
   ],
   "ombres": [
-    {"nom": "ombre au sol", "a": [620, 1560], "b": [480, 1560]}
-  ]
+    {
+      "nom": "ombre au sol",
+      "a": [
+        620,
+        1560
+      ],
+      "b": [
+        480,
+        1560
+      ]
+    }
+  ],
+  "decor": {
+    "bande_exclue": [
+      1285,
+      1415
+    ],
+    "graines": {
+      "sol": [
+        [
+          300,
+          1750
+        ],
+        [
+          800,
+          1650
+        ]
+      ],
+      "murs": [
+        [
+          150,
+          950
+        ],
+        [
+          900,
+          1100
+        ]
+      ]
+    },
+    "mesures": [
+      {
+        "nom": "sol : texture",
+        "type": "texture",
+        "boite": [
+          100,
+          1640,
+          560,
+          1800
+        ],
+        "axe": "y",
+        "famille": "sol"
+      },
+      {
+        "nom": "poteau : silhouette, côté ombre",
+        "type": "trait",
+        "a": [
+          880,
+          900
+        ],
+        "b": [
+          930,
+          900
+        ],
+        "famille": "contour"
+      },
+      {
+        "nom": "poteau : arête intérieure",
+        "type": "trait",
+        "a": [
+          905,
+          700
+        ],
+        "b": [
+          935,
+          700
+        ],
+        "famille": "contour"
+      },
+      {
+        "nom": "ombre portée : bord, à mi-longueur",
+        "type": "bord",
+        "a": [
+          620,
+          1560
+        ],
+        "b": [
+          480,
+          1560
+        ],
+        "famille": "ombre"
+      },
+      {
+        "nom": "sol éclairé",
+        "type": "zone",
+        "boite": [
+          150,
+          1700,
+          450,
+          1800
+        ],
+        "famille": "sol"
+      },
+      {
+        "nom": "sol à l'ombre",
+        "type": "zone",
+        "boite": [
+          800,
+          1850,
+          1050,
+          1900
+        ],
+        "famille": "sol"
+      },
+      {
+        "nom": "fond flou : toit sur le ciel",
+        "type": "bord",
+        "a": [
+          150,
+          740
+        ],
+        "b": [
+          150,
+          860
+        ],
+        "famille": "flou"
+      },
+      {
+        "nom": "sol sous le sujet",
+        "type": "nettete",
+        "boite": [
+          0,
+          1440,
+          1080,
+          1680
+        ],
+        "famille": "flou"
+      },
+      {
+        "nom": "détails au sol",
+        "type": "details",
+        "boite": [
+          0,
+          1480,
+          1080,
+          1760
+        ],
+        "famille": "finitions"
+      },
+      {
+        "nom": "lampe",
+        "type": "halo",
+        "centre": [
+          760,
+          620
+        ],
+        "rmax": 120,
+        "famille": "lumiere"
+      }
+    ]
+  }
 }

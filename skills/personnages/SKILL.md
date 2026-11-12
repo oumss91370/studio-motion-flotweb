@@ -26,11 +26,11 @@ Le parcours général vient de `studio-coeur`. Si la fiche « ma chaîne » (ski
 
 ## Personnage éclairé : trait à pleins et déliés, ombrage, lumière (valeurs mesurées)
 
-Les règles ci-dessus donnent un personnage plat, à trait constant. Quand le style demande un personnage **éclairé** (catégorie `styles-2-5d-histoire-vraie`, ou un reel étudié avec le skill `reproduire-reel`), le studio a mesuré au pixel un rendu de référence et l'a contrôlé sur ses propres personnages. Sept points, détaillés dans `references/trait-et-lumiere-mesures.md` (D = diamètre de la tête) :
+Les règles ci-dessus donnent un personnage plat, à trait constant. Quand le style demande un personnage **éclairé** (catégorie `styles-2-5d`, ou un reel étudié avec le skill `reproduire-reel`), le studio a mesuré au pixel un rendu de référence et l'a contrôlé sur ses propres personnages. Sept points, détaillés dans `references/trait-et-lumiere-mesures.md` (D = diamètre de la tête) :
 
 1. **Le contour suit une loi, pas une épaisseur** : `épaisseur = 0,044 D − 0,028 D × cos(angle depuis la lumière)`, soit 0,018 D côté lumière et 0,07 D côté ombre. On le construit comme un disque d'encre et un disque de peau plus petit, décalé de 0,028 D vers la lumière. Même règle pour le torse et les coiffes.
 2. **La direction de la lumière à l'écran est un paramètre obligatoire de chaque plan.** Elle commande le côté du plein, du croissant d'ombre, du filet de lumière et de l'ombre au sol. Sans elle, le rendu retombe sur un trait constant.
-3. **La tête n'est pas un aplat** : peau en aplat, plus un croissant d'ombre à bord doux (décalage 0,24 rayon, flou 0,02 D) du côté opposé à la lumière, plus un filet de lumière effilé (0,021 D de large, à 0,033 D du trait) du côté éclairé. Une bande horizontale n'apparaît que sous un chapeau à large bord.
+3. **La tête n'est pas un aplat** : peau en aplat, plus un croissant d'ombre à bord doux (décalage 0,24 rayon, flou 0,02 D) du côté opposé à la lumière, plus un filet de lumière effilé (0,021 D de large, à 0,033 D du trait) du côté éclairé. Une bande horizontale n'apparaît que sous une coiffe à bord.
 4. **Une palette par ambiance** (plein jour, coucher de soleil, intérieur, nuit) pour l'encre, les membres, la peau, le croissant et le filet. On change la palette de la peau et du trait, **pas la couleur du costume** ; de nuit la peau reste crème.
 5. **Épaisseurs** : membres 0,056 D, constants ; traits fins du visage 0,0235 D ; sourcils en formes pleines de 0,05 D ; anneau de l'œil 0,22 D, intérieur de la couleur de la peau.
 6. **Une tête légèrement irrégulière** (rapport d'axes 0,91 à 0,98), fixe par personnage.
@@ -75,7 +75,10 @@ Assembler ensuite une **planche de contrôle** : une image avec le personnage co
 
 Dans les deux cas : mêmes pièces, mêmes noms, mêmes pivots, mêmes numéros d'image.
 
-Pour la 2.5D, un **pantin prêt à l'emploi** existe dans le kit de la catégorie `styles-2-5d-histoire-vraie` (`kit/personnages.py` dessine les pièces et écrit `rig.json` ; la classe `Perso` de `kit/bl_lib.py` le monte et le fait jouer). Son personnage d'exemple est à remplacer par un dessin original.
+Pour la 2.5D, le kit de la catégorie `styles-2-5d` fournit deux pantins :
+
+- **le générateur paramétré de la chaîne mesurée** (`kit/pantin.py`) : le client décrit ses personnages (couleurs du costume, coiffe, accessoire, proportions) et le générateur les dessine au rendu mesuré ci-dessus, de face et de trois quarts, avec coude, genou, mains, expressions et une classe `Anim` pour le jeu (`snap` : pose en une image ; `va` : geste ; `cligne` : clignement de 3 images). Chaque pose reçoit l'ambiance (`amb`) et la direction de la lumière (`lum`). Il ne contient aucun personnage tout fait. C'est celui du style `tete-ronde-trait-plein-delie` ;
+- **le pantin à plans émissifs** de l'ancienne chaîne (`kit/personnages.py` dessine les pièces et écrit `rig.json` ; la classe `Perso` de `kit/bl_lib.py` le monte dans Blender) : plat, à trait constant, une seule vue. Il sert à `theatre-de-papier`. Son personnage d'exemple est à remplacer par un dessin original.
 
 ## Les limites du pantin (à lire avant d'écrire la liste de plans)
 
@@ -128,7 +131,7 @@ Les quatre champs :
 Règles fermes :
 
 - **Pas de rebond gratuit.** Aucun balancement, sautillement ou hochement en boucle sans raison. Au repos, le personnage respire à peine (1 à 2 % d'échelle verticale, cycle de 3 à 4 s) et cligne des yeux.
-- **Deux registres, un seul par vidéo** (détail dans `references/31-emotions.md`) : le **jeu sobre** est le défaut, et il est obligatoire pour `styles-2-5d-histoire-vraie` et tout style au ton réaliste : aucune boucle de corps. Le **jeu cartoon** vaut pour la catégorie `styles-cartoon`, les mascottes et les vidéos musicales : le corps peut bouger en boucle, mais **seulement calé sur le tempo de la musique** (un rebond par temps), jamais sur une boucle libre. Dans les deux registres, les autres règles tiennent : une pensée par plan, un regard d'abord, anticipation, tenue.
+- **Deux registres, un seul par vidéo** (détail dans `references/31-emotions.md`) : le **jeu sobre** est le défaut, et il est obligatoire pour `styles-2-5d` et tout style au ton réaliste : aucune boucle de corps. Le **jeu cartoon** vaut pour la catégorie `styles-cartoon`, les mascottes et les vidéos musicales : le corps peut bouger en boucle, mais **seulement calé sur le tempo de la musique** (un rebond par temps), jamais sur une boucle libre. Dans les deux registres, les autres règles tiennent : une pensée par plan, un regard d'abord, anticipation, tenue.
 - **Tout mouvement commence par un regard.**
 - **Les bouches ne changent que sur les mots accentués** de la voix (2 à 4 par phrase), pas sur chaque syllabe. Entre deux, bouche fermée.
 - **Les visages ne claquent pas** : un changement d'expression passe par un plissement des yeux (2 à 3 images), l'échange sous le plissement, puis une petite réaction du corps dont la taille dépend de l'émotion.

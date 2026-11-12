@@ -60,7 +60,7 @@ Règles de pose, tirées de l'essai :
 | `ambiance`, `plan`, `note` | texte libre, recopié dans les sorties ; `ambiance` regroupe les palettes dans la synthèse |
 | `reference` | la grandeur de référence : `{"nom": …, "forme": "<nom d'un cercle>"}` (son diamètre D, mesuré) ou `{"nom": "hauteur de capitale", "px": 53}` (valeur donnée). Sans ce champ : le premier cercle mesuré |
 
-Toutes les rubriques sont facultatives. `"traits"` est un autre nom de `"membres"`.
+Toutes les rubriques sont facultatives. `"traits"` est un autre nom de `"membres"`. La rubrique `"decor"` (matières, contours et ombres du décor, lampes, détails au sol, netteté) est lue par `mesurer_decor.py` : voir § 8.
 
 ### Les formes
 
@@ -186,3 +186,103 @@ Essai du studio du 12/11/2026, sur un reel en 1080 × 1920 compressé en VP9, pa
 | `zones`, `bouts` | repris des scripts d'origine, non rejoués dans cet essai |
 | Cas limites, rejoués après une relecture indépendante du code | vidéo avec rotation, cadence variable, 8 images ; cercle coupé par le cadre (les orientations coupées sont écartées, le reste est juste) ; image à fond transparent ; fichier de cibles enregistré avec une marque d'ordre des octets ; cible incomplète |
 | Non essayé | macOS et Linux (essais sous Windows seulement) ; Python 3.9 (syntaxe vérifiée, non exécuté) ; FFmpeg 5 et 6 (essais avec une version récente) ; vidéo HDR ; enregistrement d'écran |
+
+## 8. La rubrique `decor` : mesurer le décor
+
+Le décor se désigne dans **le même fichier de cibles**, par une rubrique `"decor"` que lit `mesurer_decor.py` (`mesurer.py` l'ignore, et inversement : les deux scripts se lancent sur le même fichier, dans le même dossier de sortie). La méthode, famille par famille, est dans `decors-camera-montage-son.md`, § 1.
+
+```
+python $S/mesurer_decor.py analyse/cibles/ref_1400.json analyse/mesures
+```
+
+```json
+{
+  "id": "ref_1400",
+  "image": "../images/ref_1400.png",
+  "ambiance": "intérieur de jour",
+  "plan": "plan large",
+  "reference": {"nom": "D (diamètre de la tête)", "px": 190},
+  "decor": {
+    "bande_exclue": [1285, 1415],
+    "graines": {"sol": [[300, 1700], [800, 1750]], "murs": [[250, 1000], [700, 450]], "plafond": [[500, 200]]},
+    "mesures": [
+      {"nom": "plancher : lames",            "type": "texture", "boite": [350, 1500, 750, 1600], "axe": "x", "famille": "sol"},
+      {"nom": "mur : planches",              "type": "texture", "boite": [100, 350, 235, 560], "axe": "x", "famille": "mur"},
+      {"nom": "table : silhouette",          "type": "trait",   "a": [444, 1150], "b": [474, 1150], "famille": "contour"},
+      {"nom": "table : arête du plateau",    "type": "trait",   "a": [100, 1232], "b": [100, 1262], "famille": "contour"},
+      {"nom": "ombre de la table : bord",    "type": "bord",    "a": [620, 1560], "b": [520, 1560], "famille": "ombre"},
+      {"nom": "plancher éclairé",            "type": "zone",    "boite": [420, 1540, 600, 1600], "famille": "sol"},
+      {"nom": "objets au sol",               "type": "details", "boite": [100, 1450, 1000, 1650]},
+      {"nom": "lampe",                       "type": "halo",    "centre": [400, 1105], "rmax": 230, "famille": "lumiere"},
+      {"nom": "sol sous le sujet",           "type": "nettete", "boite": [0, 1440, 1080, 1680]},
+      {"nom": "focale (à la main)",          "type": "optique", "verticales": [[[100, 300], [108, 1500]], [[960, 300], [950, 1500]]], "horizon_y": 1000}
+    ]
+  }
+}
+```
+
+### Les champs de la rubrique
+
+| Champ | Contenu |
+|---|---|
+| `bande_exclue` | `[y_haut, y_bas]` en pixels : bande horizontale ignorée par les mesures **globales** (palette, densité, grain). C'est celle des sous-titres. Absente : rien n'est exclu. **Exclure la même bande sur nos rendus.** L'option `--bande y0,y1` de la ligne de commande la remplace |
+| `graines` | `{"famille": [[x, y], …]}` : un ou plusieurs points **dans** le ciel, le sol, un mur. Chaque famille grandit depuis ses graines tant que la couleur reste proche ; plusieurs graines suivent un dégradé. Donne les parts de l'image, le dégradé de chaque famille et l'assombrissement des bords. Les familles sont traitées dans l'ordre : mets la plus sûre en premier |
+| `tolerance_graines` | écart de couleur toléré autour d'une graine (défaut 11). À baisser si une famille déborde, à monter si elle s'arrête trop tôt |
+| `mesures` | la liste des cibles, chacune avec `nom` (libre, unique : c'est lui que cite le fichier de paires), `type`, et `famille` (texte libre, pour trier) |
+| `D` | grandeur de référence en px, si elle ne vient pas de `"reference"`. Une cible peut porter son propre `"D"` (un objet à une autre profondeur que le personnage) |
+
+**D, la grandeur de référence**, vient du champ `"reference"` du fichier : `{"px": 190}` (valeur lue sur la grille), ou `{"forme": "tete-a"}` (un `cercle` de la rubrique `formes` : son diamètre est lu dans `<id>.json` si `mesurer.py` est déjà passé dans ce dossier, sinon mesuré sur place). Sans D, les mesures sortent en pixels seulement et `details` échoue.
+
+### Les types de mesure
+
+| Type | Écriture | Comment la poser | Ce qui sort |
+|---|---|---|---|
+| `texture` | `boite` `[x0, y0, x1, y1]`, `axe` (`"x"` ou `"y"`), `angle` facultatif | dans **une seule matière**, nette et éclairée, 100 px au moins dans le sens de l'axe, 4 lignes au moins dedans ; `axe` = direction dans laquelle on **traverse** les lignes | `contraste_ecart_type`, `contraste_p95_p5`, `lignes`, `ligne_espacement_px`, `ligne_epaisseur_px`, `ligne_profondeur`, `couleur_lignes`, `couleur_fond`, `periode_px`, `force_periode`, `grain_fin`, `degrade_niveaux` |
+| `trait` | `a`, `b`, `larg` (7), `clair` (non) | segment de 30 à 60 px **en travers** du trait, bouts sur des plages unies ; `"clair": true` pour un liseré clair | `trait` (oui / non), `epaisseur_px`, `couleur`, `luminance_trait`, `profondeur`, `cote_a`, `cote_b` |
+| `bord` | `a`, `b`, `larg` (9) | segment **en travers** d'une transition (bord d'ombre, arête floue du fond), assez long pour que tout le flou tienne entre les deux bouts | `cote_clair`, `cote_sombre`, `facteur_rvb`, `rapport_luminance`, `largeur_10_90_px`, `depassement_clair`, `depassement_sombre`, `decalage_rouge_bleu_px`, `ecart_tsl`, `delta_e` |
+| `zone` | `boite` | un rectangle dans une plage unie | `couleur`, `luminance`, `ecart_type`, `tsl` |
+| `details` | `boite` | sur le sol autour du sujet, sans personnage ni ombre portée dedans | `nombre`, `diametre_median_D`, `diametre_max_D`, `densite_par_D2`, `part_couverte_pct` |
+| `halo` | `centre`, `rmax` | centre sur la source ; `rmax` = rayon où le fond est retrouvé | `couleur_coeur`, `rayon_mi_hauteur_px`, `couleur_mi_rayon`, `couleur_fond`, `luminance_coeur`, `luminance_fond` |
+| `nettete` | `boite` | la zone dont on veut la netteté (le sol aux pieds, le fond) ; elle doit contenir du contraste | `transitions_les_plus_nettes_px`, `transition_mediane_px`, `blocs_lus` |
+| `optique` | `verticales` (deux droites de deux points), `horizon_y` | deux verticales du décor éloignées l'une de l'autre, et la ligne d'horizon | `convergence_deg`, `horizon_pct_de_la_hauteur`, et si les verticales convergent : `focale_mm_capteur36_vertical`, `champ_vertical_deg`, `inclinaison_deg` |
+
+Toute longueur en `_px` sort aussi en `_D` quand D est connu.
+
+### Ce qui sort sans aucune cible
+
+| Bloc | Contenu |
+|---|---|
+| `palette` | 10 dominantes (k-moyennes en Lab) et leur part, `saturation_moyenne` (0 à 1), `luminance_moyenne`, `contraste`, `dominante_chaude` |
+| `densite` | `segments`, `petits_segments`, `part_bords_pct` (bords nets), `part_bords_doux_pct`, `gradient_moyen` |
+| `grain` | écart type du résidu fin dans les zones plates : sous 1, aucun grain ajouté |
+| `nettete` | `mediane_px`, `p10_px`, `p90_px`, `par_tiers_vertical`, et `net_par_bande` : pour 8 bandes égales de haut en bas, la largeur des transitions **les plus nettes** de la bande. ≈ 2 px = net ; 5 px et plus = flou ; `null` = bande sans contraste |
+| `parts_pct`, `degrades`, `vignettage` | avec des `graines` : part de chaque famille, ses 5 couleurs de haut en bas, sa luminance du centre vers les coins |
+
+Sorties : `<id>_decor.json` et `<id>_decor_planche.jpg` (l'image avec les cibles numérotées, les familles cernées, la bande exclue assombrie, la palette et un résultat par cible). **Ouvre la planche à chaque fois.** Puis `python $S/synthese_decor.py analyse/mesures --prefixe ref_` : la palette commune et les moyennes par ambiance, et le relevé de toutes les mesures ciblées.
+
+Deux scripts travaillent sans fichier de cibles : `parallaxe.py` (ce qui est en volume) et `focale.py` (focale par les points de fuite) ; voir `decors-camera-montage-son.md`, § 1.2 et § 1.8.
+
+### Limites de la mesure du décor
+
+- **`segments` compte des zones de couleur, pas des objets** : un fil du bois marqué le gonfle, un fond sombre et flou le réduit. Il ne se compare qu'entre deux images au même cadrage.
+- **Lignes ou période** : quand la matière porte un fil fin en plus des joints, `ligne_espacement_px` compte le fil. Prends alors `periode_px` (autocorrélation), sur une zone où les joints filent comme dans la référence.
+- **`details`** est sensible à la compression (+11 à +25 % de détails entre une image d'origine et la même lue dans un film encodé, dans l'essai) et suppose une image d'environ 1 080 px de large (la taille du filtre est fixe). Ne compare que des images de même taille et de même état.
+- **Ne redimensionne jamais une image avant de la mesurer** : sur une image réduite aux deux tiers, les grandes longueurs en D tiennent (bord d'ombre 0,136 → 0,136 D) mais les traits fins et les comptes changent (contour d'un caillou 0,010 → 0,018 D ; détails par D² 10,2 → 8,3 ; segments 183 → 198).
+- **`parts_pct`** est approché à ± 5 points ; le « reste » mélange façades, accessoires et personnages.
+- **`trait`** mesure une épaisseur à mi-profondeur : sous 2 px, la valeur est celle du lissage. Un trait collé à une ombre ou à un autre trait donne une épaisseur double : pose la coupe ailleurs.
+- **`focale.py`** ne rend un chiffre que si la caméra est inclinée ; sur l'essai, une seule image sur vingt l'a permis. Sous 15 segments accordés, il prévient.
+- Vidéo compressée : bords fiables au demi-pixel, couleurs à 2 ou 3 niveaux.
+
+### Ce qui a été essayé pour le décor
+
+Essai du studio du 12/11/2026, depuis un dossier neuf, avec les scripts de ce skill.
+
+| Cas | Résultat |
+|---|---|
+| `mesurer_decor.py` sur 20 images d'un reel (5 ambiances) et 8 images de nos rendus | **4 364 valeurs sur 4 368 identiques** à celles de la mesure d'origine (les scripts dont ceux-ci sont la généralisation). Les 4 différences sont une correction : `luminance_trait` d'un liseré clair était rendue inversée |
+| Mêmes cibles sur 2 images lues **dans le film encodé** (H.264) au lieu de l'image d'origine | couleurs à 1 ou 2 niveaux près ; bords flous à ± 3 % ; contours à ± 0,05 px ; contraste des textures à ± 0,1 niveau ; période identique ; segments +5 %, petits segments +9 à +28 % ; détails par D² +11 à +25 % |
+| `comparer_decor.py` : 61 lignes (palette, ombres, texture, contours, flou, densité) | 60 verdicts sur 61 identiques au contrôle d'origine (34 dans la tolérance, 25 hors, 2 non mesurées). Le 61e est un arrondi : une saturation à −0,072 de la référence, que le contrôle d'origine arrondissait à −0,08 et comptait hors tolérance (± 0,08) ; ici elle est comparée sans arrondi (35 / 24 / 2) |
+| `synthese_decor.py` : 5 ambiances, 20 images | dominantes, parts et moyennes identiques à la synthèse d'origine. À savoir : les 10 dominantes d'une ambiance changent avec le **choix** des images (2 images au lieu de 4 : jusqu'à ΔE 8 sur une dominante) et, de peu, avec leur **ordre** ; les scripts les trient par nom pour que le résultat ne dépende pas de l'ordre d'écriture |
+| `parallaxe.py` : 4 paires ; `focale.py` : 2 images, dont une lue par `video.mp4@N` | chiffres identiques à ceux de la mesure d'origine |
+| Cas limites | image de 720 × 1 280 ; fichier sans rubrique `decor` ; D pris sur une forme `cercle` ; point hors de l'image, type inconnu, boîte vide, champ manquant : la cible fautive va dans `erreurs`, les autres sont mesurées |
+| Non essayé | macOS et Linux ; image horizontale (16:9) ; une référence sans sous-titres ; `optique` à la main sur une vraie image ; `angle` d'une `texture` ; plus de 20 images par ambiance dans la synthèse |

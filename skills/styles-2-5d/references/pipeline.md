@@ -1,4 +1,10 @@
-# Parcours de production d'une vidéo 2.5D « histoire vraie »
+# Parcours de production d'une vidéo 2.5D
+
+> **À lire d'abord : deux chaînes de fabrication dans le kit.**
+> - **La chaîne mesurée** (`kit/lancer.py`, `kit/compo.py`, `kit/pantin.py`, `kit/bl_decor.py`, `kit/controle.py`) est celle du style `tete-ronde-trait-plein-delie`. Ses règles chiffrées sont dans `references/prompt-maitre.md`, son mode d'emploi dans `kit/LISEZMOI.md`. Pour ce style, ce document vaut pour **l'histoire, les sources, la liste de plans, la voix, le son et la revue** (étapes 1 à 4 et 6 à 9) ; l'étape 5 (fabriquer) et l'étape 8 (assembler) se font avec la chaîne mesurée, et les sous-titres suivent le prompt maître (1 à 2 mots, minuscules, centre à y = 1 350), pas la bande décrite à l'étape 6.
+> - **La chaîne à plans émissifs** (`kit/plans.py`, `kit/bl_film.py`, `kit/rendre.py`…) est celle que décrivent les étapes Blender ci-dessous, avec les règles marquées « rendu réel du 11/11/2026 ». Elle sert à `theatre-de-papier` et garde la boucle de rendu long.
+>
+> **Registres.** La catégorie ne se limite plus aux histoires vraies : fiction, humour et explication suivent le même parcours. **La règle des sources (étape 2) reste obligatoire dès que l'histoire se dit vraie**, et pour chaque fait énoncé dans une explication. Une fiction saute le tableau des sources, et ne se présente jamais comme vraie.
 
 Source : cours « How to build a 2.5D motion studio » (parties 3 à 9), adapté au studio : assemblage dans HyperFrames (jamais Remotion), son à −14 LUFS, tout en français.
 
@@ -40,13 +46,13 @@ Image = secondes × 30 ; la vidéo commence à l'image 0. **Tous les documents p
 
 ## Étape 1 : choisir l'histoire
 
-Proposer **5 histoires vraies** (histoire, science, objets, inventions) qui tiennent dans l'un de ces titres :
+Pour une histoire vraie ou une explication, proposer **5 histoires vraies** (histoire, science, objets, inventions) qui tiennent dans l'un de ces titres (pour une fiction ou un sketch : 5 situations, chacune en une ligne, avec le personnage, le lieu et la chute) :
 
 - « Le/La [objet] qui [a fait quelque chose de surprenant] »
 - « Pourquoi [chose] fait toujours [X] »
 - une question : pourquoi, comment, que s'est-il vraiment passé.
 
-Pour chacune : l'histoire en une ligne, pourquoi un enfant de 12 ans et un adulte de 50 ans la répéteraient tous les deux, et **2 sources ouvrables**.
+Pour chacune : l'histoire en une ligne, pourquoi un enfant de 12 ans et un adulte de 50 ans la répéteraient tous les deux, et, si elle se dit vraie, **2 sources ouvrables**.
 
 Test : si l'histoire ne fait pas dire « attends, vraiment ? », elle n'arrêtera pas un inconnu qui fait défiler son fil.
 
@@ -106,12 +112,12 @@ Règles :
 Pour chaque plan :
 
 ```
-PLAN 18   images 1215-1265 (1,7 s)   « …et une nuit, la bille est tombée. »
-  DÉCOR       décor 2 (salle du trône), côté ouest, près de la jarre
-  CAMÉRA      large sur la jarre, avancée lente ; raison : on attend avec la cour endormie
+PLAN 18   images 1215-1265 (1,7 s)   « …et à cinq heures, le marteau est tombé. »
+  DÉCOR       décor 2 (chambre de l'horloger), côté fenêtre, près de l'établi
+  CAMÉRA      large sur le réveil, avancée lente ; raison : on attend avec la maison endormie
   PERSONNAGE  aucun
-  OBJET       la jarre (objet héros, en 3D) ; la bille tombe
-  SON         bille qui se détache, puis choc de bronze
+  OBJET       le réveil (objet héros, en 3D) ; le marteau frappe la cloche
+  SON         déclic du ressort, puis coup de cloche
 ```
 
 Champs :
@@ -138,7 +144,7 @@ Contrôles de la liste :
 Trois contrôles ajoutés après le rendu réel du 11/11/2026 (c'est la critique qui les a trouvés, pas le fabricant) :
 
 - **Le sujet tient dans les 65 % du haut de l'image** (au-dessus de y ≈ 1250 sur 1920) : visage, objet héros, action. Plus bas, les sous-titres au mot le couvrent. En plan taille, cadrer le personnage plus haut qu'on ne le ferait sans sous-titres. Le kit le mesure à la construction (`controle_sujet`, ligne « cadre plan … ok / À REVOIR »).
-- **Aucun double de l'objet héros dans le cadre ne contredit l'action.** Si l'objet existe en plusieurs exemplaires (huit pièces identiques autour d'un vase, deux portes, une rangée de lampes) et que l'histoire dit « une seule tombe », un voisin resté en place dans le cadre fait lire « rien ne s'est passé ». Choisir l'axe de caméra qui n'en montre qu'un (un profil, un cadre plus serré), ou sortir les voisins du champ. À vérifier sur l'image du contact et sur la dernière image du plan.
+- **Aucun double de l'objet héros dans le cadre ne contredit l'action.** Si l'objet existe en plusieurs exemplaires (huit clochettes identiques sur une étagère, deux portes, une rangée de lampes) et que l'histoire dit « une seule sonne », un voisin resté en place dans le cadre fait lire « rien ne s'est passé ». Choisir l'axe de caméra qui n'en montre qu'un (un profil, un cadre plus serré), ou sortir les voisins du champ. À vérifier sur l'image du contact et sur la dernière image du plan.
 - **L'action centrale a une arrivée visible** : on voit où l'objet va, pas seulement d'où il part (une chute filmée de dos ne prouve rien).
 
 Durées constatées : 36 plans pour 61,5 s, soit 1,71 s en moyenne ; six plans de 1,3 à 1,5 s (l'idée tenait en trois mots), aucun au-dessus de 2,5 s.
@@ -149,18 +155,18 @@ Pour chaque moment important, un tableau **en images, pas en secondes**. Exemple
 
 ```
 IMAGE   TEMPS    ÉVÉNEMENT
-1215    40,5 s   PLAN 18 commence : large sur la jarre, nuit, la cour dort
+1215    40,5 s   PLAN 18 commence : large sur le réveil, nuit, la maison dort
 1230    41,0 s   l'avancée commence, échelle 1,00 → 1,06 sur 60 images
-1248    41,6 s   la gueule du dragon ouest s'ouvre
-1254    41,8 s   la bille se détache
-1262    42,1 s   la bille touche la grenouille (son du choc sur cette image)
-1266    42,2 s   COUPE vers PLAN 19 : les yeux de l'inventeur s'ouvrent
-1272    42,4 s   sous-titre « tombée » entièrement lisible
+1248    41,6 s   le ressort se détend
+1254    41,8 s   le marteau part
+1262    42,1 s   le marteau touche la cloche (son du coup sur cette image)
+1266    42,2 s   COUPE vers PLAN 19 : les yeux de l'horloger s'ouvrent
+1272    42,4 s   sous-titre « tombé » entièrement lisible
 1290    43,0 s   fin de la tenue, coupe
 ```
 
 - **La physique tient honnête** : une chute de 30 cm dure environ un quart de seconde, soit 7 à 8 images à 30 i/s. Plus lente, elle paraît flotter, et le spectateur le sent sans savoir le dire.
-- Désormais, chaque correction est un nombre. « Déplacer le choc à 1260 » ne peut pas être mal compris.
+- Désormais, chaque correction est un nombre. « Déplacer le coup à 1260 » ne peut pas être mal compris.
 
 **Validation : liste de plans et temps clés** (avec, si le client le souhaite, la passe 1 d'un décor et la planche du personnage : voir étape 5).
 
@@ -241,7 +247,7 @@ Le kit écrit ces sous-titres : `python outils/hf_build.py` (bande, taille et po
 Skill `son`. Règles propres au format :
 
 - la voix est toujours au-dessus ; la musique reste dessous ;
-- **un bruitage seulement là où quelque chose de physique se passe** (une bille tombe, une porte claque) ; **1 à 2 bruitages par 10 s** (voir ci-dessous) ;
+- **un bruitage seulement là où quelque chose de physique se passe** (un marteau frappe, une porte claque) ; **1 à 2 bruitages par 10 s** (voir ci-dessous) ;
 - aucun « whoosh » répété plus de deux fois, et jamais un whoosh sur chaque coupe ;
 - la musique **se résout sur la dernière image** ;
 - vrais enregistrements d'abord, synthèse en repli ; niveau final −14 LUFS.
@@ -249,8 +255,8 @@ Skill `son`. Règles propres au format :
 `sons.md`, dans les mêmes numéros d'image que l'image :
 
 ```
-BILLE SE DÉTACHE   image 1254   petit déclic de métal
-CHOC               image 1262   tintement de bronze, pic le plus fort ici
+MARTEAU PART       image 1254   petit déclic de métal
+COUP               image 1262   tintement de cloche, pic le plus fort ici
 YEUX S'OUVRENT     image 1266   la musique s'efface pendant 20 images
 DERNIÈRE PHRASE    image 1920   la musique se résout
 ```
@@ -263,7 +269,7 @@ DERNIÈRE PHRASE    image 1920   la musique se résout
 - **à créditer**, même en CC0 : titre, auteur, adresse de la page, licence, et la mention « instrument virtuel » dans `audio/CREDITS.md` ;
 - ne jamais l'appeler « enregistrement d'époque » ni « instrument authentique » dans la description de la vidéo ;
 - la synthèse pure (onde fabriquée par code) reste le dernier repli, comme pour les bruitages ;
-- un bruitage de remplacement (des cailloux dans une tasse en métal à la place d'un choc de bronze introuvable) se note de la même façon : ce que c'est vraiment, pas ce qu'il imite.
+- un bruitage de remplacement (des cailloux dans une tasse en métal à la place d'un tintement de cloche introuvable) se note de la même façon : ce que c'est vraiment, pas ce qu'il imite.
 
 Avec le kit : décrire le mix dans `son/design.json` (modèle en tête de `outils/mix.py`), puis `python outils/mix.py`. Il pose l'attaque de chaque bruitage sur son image, fixe son niveau par rapport au fond de la seconde d'avant, fait plier la musique sous la voix et vise −14 LUFS. Constat du rendu réel : avec une voix de synthèse très régulière, la plage dynamique reste faible (2,2 LU).
 
@@ -341,8 +347,8 @@ Le relecteur **liste chaque problème avec son numéro d'image**. Ordre de grand
 ```
 Corriger le PLAN 18 d'après plans.md.
 OÙ           images 1248 à 1266
-PROBLÈME     la bille touche la grenouille à 1268, 6 images après le son du choc (1262)
-CHANGEMENT   seulement la chute de la bille : départ 1254, contact 1262, accélération (gravité), pas de rebond
+PROBLÈME     le marteau touche la cloche à 1268, 6 images après le son du coup (1262)
+CHANGEMENT   seulement la course du marteau : départ 1254, contact 1262, accélération, pas de rebond
 À GARDER     l'avancée de caméra, la coupe à 1266, les sous-titres, tous les autres plans
 
 Rendre les images 1254, 1258, 1262, 1266 et un aperçu de 1215 à 1290.
